@@ -1,20 +1,28 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-// goes to node_moduls
-// goes to App.vue
-// goes to ./router/index.js
-// goes to node_moduls
 
 import Vue from 'vue'
 import App from './App'
-import router from './router'
+
+import Router from 'vue-router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
-import Navigation from './components/static/Navigation'
+
+import Navigation from './components/partials/Navigation'
+import Home from '@/components/Home'
+import Contact from '@/components/Contact'
 
 Vue.use(ElementUI)
+Vue.use(Router)
 
 Vue.config.productionTip = false
+
+const routes = [
+    { path: '/', component: Home },
+    { path: '/test', component: Contact }
+]
+
+const router = new Router({routes})
 
 /* eslint-disable no-new */
 new Vue({
@@ -26,7 +34,3 @@ new Vue({
     Navigation
   }
 })
-
-
-
-// git// git// git// git// git// git// git// git// git// git// git// git// git// git

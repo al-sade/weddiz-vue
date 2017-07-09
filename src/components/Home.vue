@@ -6,8 +6,8 @@
         </div>
         <div class="row">
             <h1 class="section__headline">הנבחרת שלנו</h1>
-            <el-row>
-                <el-col v-for="cat in catgories" :span="6">
+            <el-row justify="center" type="flex">
+                <el-col v-for="cat in catgories" :span="4">
                     <div class="grid-content bg-purple">
                         <div class="category-box">
                             <h2>{{cat.name}}</h2>
@@ -19,16 +19,15 @@
         </div>
 
         <!--space for recommendations-->
-        <div class="row">
-            <p>המלצות</p>
-        </div>
+        <recommendations></recommendations>
+        
         <div class="row">
             <h1 class="section__headline">השראות</h1>
             <div id="img_feature">
                 <img src="../assets/icons/icon-inspired.png">
             </div>
             <el-row type="flex" justify="center">
-                <el-col :span="20">
+                <el-col :span="16">
                     <el-carousel :interval="5000" arrow="never">
                         <el-carousel-item v-for="item in 4" :key="item">
                         <h3>{{ item }}</h3>
@@ -41,8 +40,13 @@
 </template>
 
 <script>
+import Recommendations from './Recommendations.vue'
+
 export default {
   name: 'hello',
+  components: {
+    Recommendations
+  },
   data () {
     return {
       name: 'Welcome to Your Vue.js App',
@@ -57,10 +61,9 @@ export default {
 }
 </script>
 
-<style scoped>
-h1{
-    color: yellow;
-}
+<style scoped lang="css">
+@import '../assets/css/style.css';
+
 #home{
     padding-top: 194px;
 }
@@ -69,23 +72,6 @@ h1{
     background-attachment: fixed;
     background-size: cover;
     min-height: 40vh;
-}
-.section__headline {
-    margin-top: 0px;
-    padding-top: 30px;
-    font: 400 48px "BoeiManali", sans-serif;
-    color: #4DBAB4;
-    text-align: center;
-}
-.section__headline:before,.section__headline:after {
-    content: "";
-    background: url(../assets/icons/icon-cross.png);
-    display: inline-block;
-    height: 18px;
-    width: 18px;
-    margin: 0 10px 0 10px;
-    position: relative;
-    vertical-align: middle;
 }
 
 h2{
@@ -108,7 +94,7 @@ h2{
 
 .row:nth-child(2),.row:nth-child(4){
     position: relative;
-    background-image: url(../assets/pattern.jpg);
+    /*background-image: url(../assets/pattern.jpg);*/
 }
 
 .slogan{

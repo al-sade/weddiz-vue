@@ -1,0 +1,17 @@
+.section__headline {
+    margin-top: 0px;
+    padding-top: 30px;
+    font: 400 48px "BoeiManali", sans-serif;
+    color: #4DBAB4;
+    text-align: center;
+}
+.section__headline:before,.section__headline:after {
+    content: "";
+    background: url(../../assets/icons/icon-cross.png);
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin: 0 10px 0 10px;
+    position: relative;
+    vertical-align: middle;
+}

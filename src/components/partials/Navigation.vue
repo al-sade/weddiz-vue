@@ -13,27 +13,34 @@
       </div>
       <img src="../../assets/logo.png">
       <el-menu  :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
-        <el-menu-item v-for="li in list" index="1">{{li}}</el-menu-item>
+        <el-menu-item><router-link to="/contact">צור קשר</router-link></el-menu-item>
+        <el-menu-item><router-link to="/recommendations">המלצות</router-link></el-menu-item>
+        <el-menu-item><router-link to="/suppliers?cat=גימיקים">אטרקציות וגימיקים</router-link></el-menu-item>
+        <el-menu-item><router-link to="/suppliers?cat=מוזיקה">מוזיקה</router-link></el-menu-item>
+        <el-menu-item><router-link to="/suppliers?cat=וידאו">וידאו</router-link></el-menu-item>
+        <el-menu-item><router-link to="/suppliers?cat=סטילס">סטילס</router-link></el-menu-item>
+        <el-menu-item><router-link to="/about">אודות</router-link></el-menu-item>
+        <el-menu-item><router-link to="/">דף הבית</router-link></el-menu-item>
       </el-menu>
   </div>
 </template>
 
 <script>
-    export default{
+    export default {
       name: 'navigation',
       data () {
         return {
           activeIndex: '1',
           activeIndex2: '1',
           list: [
-            'צור קשר',
-            'המלצות',
-            'אטרקציות וגימיקים',
-            'מוזיקה',
-            'וידאו',
-            'סטילס',
-            'אודות',
-            'דף הבית'
+            {name: 'צור קשר', link: '/contact'},
+            {name: 'המלצות', link: 'contact'},
+            {name: 'אטרקציות וגימיקים', link: 'contact'},
+            {name: 'מוזיקה', link: 'contact'},
+            {name: 'וידאו', link: 'contact'},
+            {name: 'סטילס', link: 'contact'},
+            {name: 'אודות', link: 'contact'},
+            {name: 'דף הבית', link: 'contact'}
           ]
         }
       }

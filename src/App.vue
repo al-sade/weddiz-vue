@@ -28,38 +28,39 @@
         </div>
       </div>
       <el-row class="footer-form" justify="center" type="flex">
-        <el-col :span="14">
-                      <h1 class="footer__heading">השאירו הודעה</h1>
+        <el-col :span="12">
+          <h1 class="footer__heading">השאירו הודעה</h1>
           <el-form >
             <el-form-item>
-              <el-input type="text" palceholder="שם ושם משפחה"></el-input>
+              <el-input type="text" placeholder="שם ושם משפחה"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-input type="text" palceholder="טלפון"></el-input>
+              <el-input type="text" placeholder="טלפון"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-input type="text" palceholder='דוא"ל'></el-input>
+              <el-input type="text" placeholder='דוא"ל'></el-input>
             </el-form-item>
             <el-form-item>
-              <el-input type="date" palceholder="תאריך האירוע"></el-input>
+              <el-input type="date" placeholder="תאריך האירוע"></el-input>
             </el-form-item>
             <el-form-item >
               <el-input></el-input>
             </el-form-item>
               <el-form-item>
               <el-checkbox-group>
-                <el-checkbox label="Online activities" name="type"></el-checkbox>
-                <el-checkbox label="Promotion activities" name="type"></el-checkbox>
-                <el-checkbox label="Offline activities" name="type"></el-checkbox>
-                <el-checkbox label="Simple brand exposure" name="type"></el-checkbox>
+                <span>מתעניינים ב:</span>
+                <el-checkbox label="צילום סטילס" name="type"></el-checkbox>
+                <el-checkbox label="צילום וידאו" name="type"></el-checkbox>
+                <el-checkbox label="אטרקציות וגימיקים" name="type"></el-checkbox>
+                <el-checkbox label="מוזיקה" name="type"></el-checkbox>
+                <el-checkbox label="הכל" name="type"></el-checkbox>
               </el-checkbox-group>
             </el-form-item>
             <el-form-item>
               <el-input type="textarea"></el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary">Submit</el-button>
-              <el-button>Reset</el-button>
+              <el-button type="primary">שלח</el-button>
             </el-form-item>
           </el-form>
         </el-col>
@@ -72,7 +73,7 @@
 </template>
 
 <script>
-import Navigation from './components/static/Navigation.vue'
+import Navigation from './components/partials/Navigation.vue'
 
 export default {
   name: 'app',
@@ -101,6 +102,9 @@ export default {
   width: 50%;
   padding: 50px 0;
 }
+.el-form{
+    direction: rtl;
+}
 .footer__social__icon {
     width: 45px;
     height: 46px;
@@ -122,5 +126,9 @@ export default {
 .icon-facebook-inverted{background-image: url(assets/icons/icon-facebook.png)}
 .footer-form{
   padding-top: 55px;
+}
+.el-checkbox+.el-checkbox{
+  margin-right: 15px;
+  margin-left: 0px;
 }
 </style>

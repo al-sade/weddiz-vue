@@ -9,32 +9,27 @@ import VueResource from 'vue-resource'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
-import Navigation from './components/partials/Navigation'
 import Home from '@/components/Home'
 import Suppliers from '@/components/Suppliers'
 import Contact from '@/components/Contact'
 
-Vue.use(ElementUI)
 Vue.use(VueResource)
 Vue.use(Router)
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/suppliers', component: Suppliers },
-    { path: '/contact', component: Contact }
+    {path: '/', component: Home},
+    {path: '/suppliers', component: Suppliers},
+    {path: '/contact', component: Contact}
 ]
 
 const router = new Router({routes})
 
-/* eslint-disable no-new */
+
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: {
-    App,
-    Navigation
-  }
+    el: '#app',
+    router,
+    render: h => h(App)
 })

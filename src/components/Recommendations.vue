@@ -14,7 +14,7 @@
                 <i class="testimonial__icon icon-photo-bg"></i>
                 <i class="testimonial__icon icon-camera-bg"></i>
                 <i class="testimonial__icon icon-plane-bg"></i>
-                <i class="testimonial__icon icon-headset-bg"></i>						
+                <i class="testimonial__icon icon-headset-bg"></i>
             </div class="box-column">
             <div class="box-column right-box">
               <img src="../assets/testimonial-img.jpg">
@@ -30,7 +30,7 @@
 
 <script>
 export default{
-  name: 'recommendations'
+
 }
 </script>
 

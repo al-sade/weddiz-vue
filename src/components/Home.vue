@@ -7,20 +7,20 @@
         <div class="row">
             <h1 class="section__headline">הנבחרת שלנו</h1>
             <el-row justify="center" type="flex">
-                <el-col v-for="cat in catgories" :span="4">
+                <el-col v-for="category in categories" :span="4">
                     <div class="grid-content bg-purple">
                         <div class="category-box">
-                            <h2>{{cat.name}}</h2>
+                            <h2>{{category.name}}</h2>
                         </div>
                         <div class="slogan"><p>{{cat.slogan}}</p></div>
                     </div>
                 </el-col>
-            </el-row>            
+            </el-row>
         </div>
 
         <!--space for recommendations-->
         <recommendations></recommendations>
-        
+
         <div class="row">
             <h1 class="section__headline">השראות</h1>
             <div id="img_feature">
@@ -40,23 +40,34 @@
 </template>
 
 <script>
-import Recommendations from './Recommendations.vue'
-
 export default {
-  name: 'hello',
   components: {
-    Recommendations
+    'recommendations' : require('./Recommendations.vue')
   },
   data () {
     return {
+      Acontent: '',
       name: 'Welcome to Your Vue.js App',
-      catgories: [
+      categories: [
         {name: 'מוזיקה', slogan: 'נבחרת הדיג׳ייס שתעשה לכם שמח בחתונה'},
         {name: 'אטרקציות וגימיקים', slogan: 'אטרקציות וגימיקים לשדרוג האירוע'},
         {name: 'צילום וידאו', slogan: 'צלמי הוידאו שיהפכו אתכם לכוכבי הסרט'},
         {name: 'צילום סטילס', slogan: 'נבחרת הצלמים שיתעדו לכם אירוע בלתי נשכח'}
       ]
     }
+  },
+  methods: {
+      onSubmitted() {
+        this.$http.post('http://localhost:8000/api/supplier', {content: this.Acontent})
+            .then(
+                (response) => {
+                    this.name = response.body
+                }
+            )
+            .catch(
+                (error) => console.log(error)
+            )
+      }
   }
 }
 </script>
@@ -104,7 +115,7 @@ h2{
     font-size: 22px;
 }
 .el-carousel{
-    padding-bottom: 60px; 
+    padding-bottom: 60px;
 }
 .el-carousel__item h3 {
 color: #475669;

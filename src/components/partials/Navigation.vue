@@ -1,14 +1,14 @@
 <template>
   <div id="header">
       <div id="top-bar">
-          <button>Wishlist</button>
+          <el-button type="primary">Wishlist</el-button>
           <ul>
-              <li><a href="#">link</a></li>
-              <li><a href="#">link</a></li>
-              <li><a href="#">link</a></li>
-              <li><a href="#">link</a></li>
-              <li><a href="#">link</a></li>
-              <li><a href="#">link</a></li>
+              <li><a href="#">icon</a></li>
+              <li><a href="#">icon</a></li>
+              <li><a href="#">icon</a></li>
+              <li><a href="#">icon</a></li>
+              <li><a href="#">icon</a></li>
+              <li><a href="#">icon</a></li>
           </ul>
       </div>
       <img src="../../assets/logo.png">
@@ -69,6 +69,10 @@ body{
     display: inline-flex;
     margin: 0 10px;
 }
+
+#top-bar li a{
+    color: #FFF;
+}
 .el-menu{
     background-color: #FFF; 
     border-top: 2px double #333;
@@ -78,8 +82,9 @@ body{
     float: none;
     display: inline-block;
 }
-button{
+.el-button{
     float: left;
+    border-radius: 0px;
 }
 </style>
 

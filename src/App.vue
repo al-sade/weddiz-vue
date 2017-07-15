@@ -18,7 +18,6 @@
         name: 'app',
         data () {
             return {
-                cart: 'abbbbbbbb'
             }
         },
         methods: {},

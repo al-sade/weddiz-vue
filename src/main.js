@@ -27,9 +27,12 @@ const routes = [
 
 const router = new Router({routes})
 
+import { store } from './store/store'
 
 new Vue({
     el: '#app',
     router,
+    store,
     render: h => h(App)
 })
+

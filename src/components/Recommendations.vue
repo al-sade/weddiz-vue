@@ -5,7 +5,7 @@
           <h1 class="section__headline">זוגות מספרים</h1>
           <div class="reco-box">
             <div class="box-column" :span="2">
-              <img src="../assets/arrow-left.png">
+              <img src="../assets/images/arrow-left.png">
             </div class="box-column">
             <div class="box-column left-box">
                 <h2 class="testimonial__heading">אולגה ואמיר <span class="testimonial__date">2.2.16</span></h2>
@@ -17,10 +17,10 @@
                 <i class="testimonial__icon icon-headset-bg"></i>
             </div class="box-column">
             <div class="box-column right-box">
-              <img src="../assets/testimonial-img.jpg">
+              <img src="../assets/images/testimonial-img.jpg">
             </div class="box-column">
             <div class="box-column" :span="2">
-              <img src="../assets/arrow-right.png">
+              <img src="../assets/images/arrow-right.png">
             </div class="box-column">
           </div>
         </el-col>

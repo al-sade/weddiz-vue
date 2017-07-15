@@ -4,12 +4,11 @@
             <el-col :span="16">
                 <el-carousel indicator-position="outside">
                     <el-carousel-item class="hero-img" v-for="item in 4" :key="item">
-                        <h3 style="color: white;">w w {{cart}}g</h3>
+                        <h3 style="color: white;">{{cart}}</h3>
                     </el-carousel-item>
                 </el-carousel>
             </el-col>
         </el-row>
-
         <el-row class="suppliers-box" justify="right" type="flex">
             <div id="filters">
                 <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -33,11 +32,14 @@
             </div>
         </el-row>
 
-        <el-row class="suppliers-box" v-for="i in Math.ceil(count_suppliers / 4)" justify="center" type="flex">
-            <el-col v-for="supplier in suppliers.slice((i - 1) * 4, i * 4)" :span="5">
-                <el-card >
+        <el-row class="suppliers-box"
+                v-for="i in Math.ceil(count_suppliers / 4)"
+                v-bind:key="i"
+                justify="center" type="flex">
+            <el-col v-for="supplier in suppliers.slice((i - 1) * 4, i * 4)" v-bind:key="supplier" :span="5">
+                <el-card>
                     <el-button type="text" class="button" @click="addSupplier(supplier)">Add to Wishlist</el-button>
-                    <img src="../assets/logo.png" class="image">
+                    <img src="../assets/images/logo.png" class="image">
                     <div style="padding: 14px;">
                         <span>{{supplier.first_name + ' ' + supplier.last_name}}</span>
                         <div class="bottom clearfix">
@@ -62,7 +64,7 @@
         },
         data () {
             return {
-                cart: this.cart,
+                cart: this.$store.getters.getCart,
                 suppliers: '',
                 count_suppliers: '',
                 rows: '',
@@ -76,7 +78,7 @@
 
         methods: {
             getSuppliers() {
-                this.$http.get('http://localhost:8000/api/supplier', {content: this.Acontent})
+                this.$http.get('http://localhost:8000/api/supplier/22')
                     .then(
                         (response) => {
                             this.suppliers = response.body.data
@@ -87,8 +89,13 @@
                     .catch(
                         (error) => console.log(error)
                     )
+            },
+            addSupplier(item){
+                this.cart.push({name: 'john'})
+                console.log(this.cart)
             }
         }
+
     }
 </script>
 
@@ -98,7 +105,7 @@
     }
 
     .hero-img {
-        background-image: url(../assets/team-video.jpg);
+        background-image: url(../assets/images/team-video.jpg);
         background-size: cover;
         background-position: center;
     }
@@ -109,7 +116,7 @@
 
     .suppliers-box {
         direction: rtl;
-        background-image: url(../assets/pattern.jpg);
+        background-image: url(../assets/images/pattern.jpg);
     }
 
     .el-select-dropdown__list {

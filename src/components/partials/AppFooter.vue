@@ -98,7 +98,7 @@
         display: inline-block;
     }
     .footer-img{
-        background-image: url(../../assets/home_background.jpg);
+        background-image: url(../../assets/images/home_background.jpg);
         background-size: cover;
         background-position: center center;
     }

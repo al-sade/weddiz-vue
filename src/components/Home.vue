@@ -7,12 +7,12 @@
         <div class="row">
             <h1 class="section__headline">הנבחרת שלנו</h1>
             <el-row justify="center" type="flex">
-                <el-col v-for="category in categories" :span="4">
+                <el-col v-for="category in categories" v-bind:key="category" :span="4">
                     <div class="grid-content bg-purple">
                         <div class="category-box">
                             <h2>{{category.name}}</h2>
                         </div>
-                        <div class="slogan"><p>{{cat.slogan}}</p></div>
+                        <div class="slogan"><p>{{category.slogan}}</p></div>
                     </div>
                 </el-col>
             </el-row>
@@ -79,7 +79,7 @@ export default {
     padding-top: 194px;
 }
 .hero-img{
-    background-image: url(../assets/home_background.jpg);
+    background-image: url(../assets/images/home_background.jpg);
     background-attachment: fixed;
     background-size: cover;
     min-height: 40vh;
@@ -97,7 +97,7 @@ h2{
     cursor: pointer;
 }
 .category-box:first-child{
-    background-image: url(../assets/team-video.jpg);
+    background-image: url(../assets/images/team-video.jpg);
     min-height: 300px;
     background-size: cover;
     background-position: center;

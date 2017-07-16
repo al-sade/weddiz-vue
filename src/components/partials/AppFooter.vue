@@ -86,7 +86,8 @@
     .col{
         display: table-cell;
         width: 50%;
-        padding: 50px 0;
+        padding: 115px 0;
+        background-color: #f5f4f2;
     }
     .el-form{
         direction: rtl;
@@ -116,5 +117,8 @@
     .el-checkbox+.el-checkbox{
         margin-right: 15px;
         margin-left: 0px;
+    }
+    p.footer__contact__info {
+        font-size: 22px;
     }
 </style>

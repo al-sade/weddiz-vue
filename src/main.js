@@ -10,6 +10,7 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
 import Home from '@/components/Home'
+import About from '@/components/About'
 import Suppliers from '@/components/Suppliers'
 import Contact from '@/components/Contact'
 
@@ -21,6 +22,7 @@ Vue.config.productionTip = false
 
 const routes = [
     {path: '/', component: Home},
+    {path: '/about', component: About},
     {path: '/suppliers', component: Suppliers},
     {path: '/contact', component: Contact}
 ]

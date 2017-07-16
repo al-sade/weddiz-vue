@@ -1,12 +1,8 @@
 <template>
     <div class="wrapper">
-        <el-row justify="center" type="flex">
-            <el-col :span="16">
-                <el-carousel indicator-position="outside">
-                    <el-carousel-item class="hero-img" v-for="item in 4" :key="item">
-                        <h3 style="color: white;">{{cart}}</h3>
-                    </el-carousel-item>
-                </el-carousel>
+        <el-row align="middle" type="flex">
+            <el-col class="hero-img">
+                <h1 class="page__title"></h1>
             </el-col>
         </el-row>
         <el-row class="suppliers-box" justify="right" type="flex">
@@ -100,16 +96,12 @@
 </script>
 
 <style scoped>
-    .wrapper {
-        padding-top: 194px;
-    }
-
     .hero-img {
-        background-image: url(../assets/images/team-video.jpg);
+        background-image: url(../assets/images/home_background.jpg);
+        background-attachment: fixed;
         background-size: cover;
-        background-position: center;
+        min-height: 40vh;
     }
-
     .el-carousel {
         padding-top: 35px;
     }

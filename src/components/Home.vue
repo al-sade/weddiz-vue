@@ -23,11 +23,11 @@
 
         <div class="row">
             <h1 class="section__headline">השראות</h1>
-            <div id="img_feature">
-                <img src="../assets/icons/icon-inspired.png">
-            </div>
             <el-row type="flex" justify="center">
                 <el-col :span="16">
+                    <div id="img_feature">
+                        <img src="../assets/icons/icon-inspired.png">
+                    </div>
                     <el-carousel :interval="5000" arrow="never">
                         <el-carousel-item v-for="item in 4" :key="item">
                         <h3>{{ item }}</h3>
@@ -75,9 +75,6 @@ export default {
 <style scoped lang="css">
 @import '../assets/css/style.css';
 
-#home{
-    padding-top: 194px;
-}
 .hero-img{
     background-image: url(../assets/images/home_background.jpg);
     background-attachment: fixed;
@@ -86,7 +83,8 @@ export default {
 }
 
 h2{
-    background-color: #333;
+    background-color: #d4d7c4;
+    box-shadow: inset 0px 0px 3px 0px black;
     padding: 10px;
 }
 
@@ -105,14 +103,16 @@ h2{
 
 .row:nth-child(2),.row:nth-child(4){
     position: relative;
-    /*background-image: url(../assets/pattern.jpg);*/
+    background-image: url(../assets/images/pattern.jpg);
+    padding-bottom: 90px;
 }
 
 .slogan{
     margin: 0 15px;
     padding: 5px;
-    background: #bbb;
+    background: #FFF;
     font-size: 22px;
+    border: 4px double #d4d7c4;
 }
 .el-carousel{
     padding-bottom: 60px;

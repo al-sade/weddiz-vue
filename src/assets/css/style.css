@@ -15,3 +15,20 @@
     position: relative;
     vertical-align: middle;
 }
+
+.testimonial__heading {
+    font: 400 33px "Heebo", sans-serif;
+    color: #EB5884;
+    margin-top: 0;
+    line-height: 30px;
+}
+.testimonial__text {
+    border-bottom: 2px solid #3a3a3a;
+    padding-bottom: 15px;
+    font-size: 20px;
+}
+
+.page__title{
+    color: #FFF;
+    font-size:36px;
+}

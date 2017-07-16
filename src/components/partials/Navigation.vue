@@ -1,7 +1,7 @@
 <template>
     <div id="header">
         <div id="top-bar">
-            <el-dropdown trigger="click">
+            <el-dropdown class="wishlist-button" trigger="click">
                 <el-badge class="item" :value="cart.length">
                     <span class="el-dropdown-link">WISHLIST<img src="../../assets/images/icon-heart.png"></span>
                 </el-badge>
@@ -20,7 +20,7 @@
                 <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
             </ul>
         </div>
-        <img src="../../assets/images/logo.png">
+        <img id="logo"  src="../../assets/images/logo.png">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
             <el-menu-item index="1">
                 <router-link to="/contact">צור קשר</router-link>
@@ -74,14 +74,21 @@
     }
 
     #header {
-        position: fixed;
+        /*position: fixed;*/
         background-color: #FFF;
         width: 100%;
         z-index: 9999;
     }
+    #logo{
+        margin: 15px 0;
+    }
 
     #app {
         margin-top: 0px;
+    }
+
+    .wishlist-button {
+        box-shadow: inset 0px 0px 10px -2px #333333;
     }
 
     #top-bar {
@@ -107,10 +114,6 @@
         padding: 14px 0;
     }
 
-    #top-bar li a {
-        color: #FFF;
-    }
-
     #top-bar li img {
         max-height: 32px;
         vertical-align: middle;
@@ -133,8 +136,14 @@
 
     .el-menu {
         background-color: #FFF;
-        border-top: 2px double #333;
-        border-bottom: 2px double #333;
+        border-top: 4px double #d4d7c4;
+        border-bottom: 4px double #d4d7c4;
+    }
+
+    .el-menu a {
+        text-decoration: none;
+        color: #8496a2;
+        font-size: 16px;
     }
 
     .el-menu--horizontal .el-menu-item {

@@ -2,6 +2,9 @@
     <div id="home">
         <div class="row">
             <div class="hero-img">
+                <div class="hero-text">היום שלכם
+                <hr class="title_seperator">
+                הספקים שלנו</div>
             </div>
         </div>
         <div class="row">
@@ -79,9 +82,16 @@ export default {
     background-image: url(../assets/images/home_background.jpg);
     background-attachment: fixed;
     background-size: cover;
-    min-height: 40vh;
+    min-height: 72vh;
 }
 
+.hero-text {
+    font-size: 46px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #3a3a3a;
+    position: relative;
+    top:25vh;
+}
 h2{
     background-color: #d4d7c4;
     box-shadow: inset 0px 0px 3px 0px black;

@@ -1,9 +1,10 @@
 <template>
     <div id="header">
         <div id="top-bar">
-            <el-dropdown class="wishlist-button" trigger="click">
+            <el-dropdown class="wishlist-button">
                 <el-badge class="item" :value="cart.length">
-                    <span class="el-dropdown-link">WISHLIST<img src="../../assets/images/icon-heart.png"></span>
+                    <span class="el-dropdown-link"><router-link to="/wishlist">WISHLIST<img
+                            src="../../assets/images/icon-heart.png"></router-link></span>
                 </el-badge>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item v-for="(supplier, index) in    cart" v-bind:key="index">
@@ -20,7 +21,7 @@
                 <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
             </ul>
         </div>
-        <img id="logo"  src="../../assets/images/logo.png">
+        <img id="logo" src="../../assets/images/logo.png">
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
             <el-menu-item index="1">
                 <router-link to="/contact">צור קשר</router-link>
@@ -78,8 +79,10 @@
         background-color: #FFF;
         width: 100%;
         z-index: 9999;
+        max-height: 40vh;
     }
-    #logo{
+
+    #logo {
         margin: 15px 0;
     }
 
@@ -89,10 +92,19 @@
 
     .wishlist-button {
         box-shadow: inset 0px 0px 10px -2px #333333;
+        float: left;
+        background: #2dc0ff;
+        padding: 15px;
+    }
+    .wishlist-button:hover, .wishlist-button a:hover{
+        cursor: pointer;
+        background: #FFF;
     }
 
     #top-bar {
-        background-color: #333;
+        border-bottom: 4px double #ffffff;
+        border-top: 2px solid #faebd7;
+        background: antiquewhite;
     }
 
     #top-bar::after {
@@ -119,17 +131,13 @@
         vertical-align: middle;
     }
 
-    .el-dropdown {
-        float: left;
-        background: #20a2ff;
-        padding: 15px;
-    }
-
     .el-dropdown-link {
-        cursor: pointer;
         font-size: 20px;
     }
 
+    .el-dropdown-link a {
+        text-decoration: none;
+    }
     .el-dropdown-menu {
         z-index: 9999 !important;
     }
@@ -138,12 +146,13 @@
         background-color: #FFF;
         border-top: 4px double #d4d7c4;
         border-bottom: 4px double #d4d7c4;
+        color: #4dbab4;
     }
 
     .el-menu a {
         text-decoration: none;
         color: #8496a2;
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .el-menu--horizontal .el-menu-item {
@@ -153,6 +162,10 @@
 
     .el-button {
         border-radius: 0px;
+    }
+
+    .el-menu--horizontal>.el-menu-item:hover{
+        border-bottom: 5px solid gray;
     }
 </style>
 

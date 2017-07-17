@@ -25,8 +25,9 @@
             </div>
         </div>
         <el-row class="footer-form" justify="center" type="flex">
-            <el-col :span="12">
-                <h1 class="footer__heading">השאירו הודעה</h1>
+            <el-col :span="8">
+                <h1 class="footer__heading" >השאירו הודעה</h1>
+                <img class="form_border" src="../../assets/images/left-border.png">
                 <el-form >
                     <el-form-item>
                         <el-input type="text" placeholder="שם ושם משפחה"></el-input>
@@ -40,9 +41,6 @@
                     <el-form-item>
                         <el-input type="date" placeholder="תאריך האירוע"></el-input>
                     </el-form-item>
-                    <el-form-item >
-                        <el-input></el-input>
-                    </el-form-item>
                     <el-form-item>
                         <el-checkbox-group>
                             <span>מתעניינים ב:</span>
@@ -54,12 +52,13 @@
                         </el-checkbox-group>
                     </el-form-item>
                     <el-form-item>
-                        <el-input type="textarea"></el-input>
+                        <el-input type="textarea" rows="7"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary">שלח</el-button>
+                        <button type="primary" class="submit_button">שלח</button>
                     </el-form-item>
                 </el-form>
+                <img class="form_border" src="../../assets/images/right-border.png">
             </el-col>
         </el-row>
         <div id="sub-footer">
@@ -87,7 +86,7 @@
         display: table-cell;
         width: 50%;
         padding: 115px 0;
-        background-color: #f5f4f2;
+        /*background-color: #f5f4f2;*/
     }
     .el-form{
         direction: rtl;
@@ -107,6 +106,27 @@
         font: 400 54px "BoeiManali", sans-serif;
         color: #EB5884;
     }
+    .footer_form .footer__heading{
+        text-align: right;
+    }
+    .footer-form{
+        background: antiquewhite;
+    }
+    .form_border:nth-child(1){
+        position: absolute;
+        right: 28%;
+        bottom: 0;
+    }
+    .form_border:nth-child(2){
+        position: absolute;
+        left: 28%;
+        top: 12.5%;
+    }
+    #sub-footer{
+        padding: 10px;
+        margin: 0;
+        background: antiquewhite;
+    }
     .icon-youtube-inverted{background-image: url(../../assets/icons/icon-youtube.png)}
     .icon-vimeo-inverted{background-image: url(../../assets/icons/icon-vimeo.png)}
     .icon-instagram-inverted{background-image: url(../../assets/icons/icon-instagram.png)}
@@ -120,5 +140,20 @@
     }
     p.footer__contact__info {
         font-size: 22px;
+    }
+    .submit_button{
+        color: #eb5884;
+        background-color: #bbdddd;
+        border: 2px double #eb5884;
+        padding: 13px;
+        min-width: 200px;
+        float: left;
+        font-size: 26px;
+    }
+    .submit_button:hover{
+        cursor: pointer;
+        color: #bbdddd;
+        background-color: #eb5884;
+        border: 2px double #bbdddd;
     }
 </style>

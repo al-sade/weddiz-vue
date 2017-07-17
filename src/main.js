@@ -12,6 +12,7 @@ import 'element-ui/lib/theme-default/index.css'
 import Home from '@/components/Home'
 import About from '@/components/About'
 import Suppliers from '@/components/Suppliers'
+import Wishlist from '@/components/Wishlist'
 import Contact from '@/components/Contact'
 
 Vue.use(VueResource)
@@ -24,6 +25,7 @@ const routes = [
     {path: '/', component: Home},
     {path: '/about', component: About},
     {path: '/suppliers', component: Suppliers},
+    {path: '/wishlist', component: Wishlist},
     {path: '/contact', component: Contact}
 ]
 

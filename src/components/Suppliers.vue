@@ -100,7 +100,7 @@
         background-image: url(../assets/images/home_background.jpg);
         background-attachment: fixed;
         background-size: cover;
-        min-height: 40vh;
+        min-height: 72vh;
     }
     .el-carousel {
         padding-top: 35px;

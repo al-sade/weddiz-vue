@@ -13,12 +13,10 @@
                 </el-dropdown-menu>
             </el-dropdown>
             <ul>
-                <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-facebook-hover.png"> </a></li>
+                <li><a href="#"><img src="../../assets/icons/icon-facebook.png"> </a></li>
+                <li><a href="#"><img src="../../assets/icons/icon-instagram.png"> </a></li>
+                <li><a href="#"><img src="../../assets/icons/icon-youtube.png"> </a></li>
+                <li><a href="#"><img src="../../assets/icons/icon-vimeo.png"> </a></li>
             </ul>
         </div>
         <img id="logo" src="../../assets/images/logo.png">
@@ -79,7 +77,6 @@
         background-color: #FFF;
         width: 100%;
         z-index: 9999;
-        max-height: 40vh;
     }
 
     #logo {
@@ -96,7 +93,8 @@
         background: #2dc0ff;
         padding: 15px;
     }
-    .wishlist-button:hover, .wishlist-button a:hover{
+
+    .wishlist-button:hover, .wishlist-button a:hover {
         cursor: pointer;
         background: #FFF;
     }
@@ -138,6 +136,7 @@
     .el-dropdown-link a {
         text-decoration: none;
     }
+
     .el-dropdown-menu {
         z-index: 9999 !important;
     }
@@ -164,7 +163,7 @@
         border-radius: 0px;
     }
 
-    .el-menu--horizontal>.el-menu-item:hover{
+     .el-menu-item:hover {
         border-bottom: 5px solid gray;
     }
 </style>

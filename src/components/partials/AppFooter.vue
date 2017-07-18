@@ -52,7 +52,7 @@
                         </el-checkbox-group>
                     </el-form-item>
                     <el-form-item>
-                        <el-input type="textarea" rows="7"></el-input>
+                        <el-input type="textarea" :rows="7"></el-input>
                     </el-form-item>
                     <el-form-item>
                         <button type="primary" class="submit_button">שלח</button>

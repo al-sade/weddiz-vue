@@ -157,5 +157,5 @@
         padding: 55px 0;
         background: rgba(250, 235, 215, 0.46);
     }
-    
+
 </style>

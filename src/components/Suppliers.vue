@@ -95,6 +95,11 @@
                     )
             },
             addSupplier(item){
+                this.$notify({
+                    title: item.first_name + ' ' + item.last_name,
+                    message: 'נוסף בהצלחה',
+                    type: 'success'
+                });
                 this.cart.push({name: 'john'})
                 console.log(this.cart)
             }
@@ -152,4 +157,5 @@
         padding: 55px 0;
         background: rgba(250, 235, 215, 0.46);
     }
+    
 </style>

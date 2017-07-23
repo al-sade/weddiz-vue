@@ -1,7 +1,7 @@
 <template>
     <div id="header">
         <div id="top-bar">
-            <el-dropdown class="wishlist-button">
+            <el-dropdown class="wishlist-button smooth">
                 <el-badge class="item" :value="cart.length">
                     <span class="el-dropdown-link"><router-link to="/wishlist">WISHLIST<img
                             src="../../assets/images/icon-heart.png"></router-link></span>
@@ -13,13 +13,13 @@
                 </el-dropdown-menu>
             </el-dropdown>
             <ul>
-                <li><a href="#"><img src="../../assets/icons/icon-facebook.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-instagram.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-youtube.png"> </a></li>
-                <li><a href="#"><img src="../../assets/icons/icon-vimeo.png"> </a></li>
+                <li class="smooth"><a href="#"><img src="../../assets/icons/icon-facebook.png"> </a></li>
+                <li class="smooth"><a href="#"><img src="../../assets/icons/icon-instagram.png"> </a></li>
+                <li class="smooth"><a href="#"><img src="../../assets/icons/icon-youtube.png"> </a></li>
+                <li class="smooth"><a href="#"><img src="../../assets/icons/icon-vimeo.png"> </a></li>
             </ul>
         </div>
-        <img id="logo" src="../../assets/images/logo.png">
+        <router-link to="/"><img id="logo" src="../../assets/images/logo.png"></router-link>
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal">
             <el-menu-item index="1">
                 <router-link to="/contact">צור קשר</router-link>
@@ -68,6 +68,8 @@
 </script>
 
 <style>
+    @import "../../assets/css/style.css";
+
     body {
         margin: 0px !important;
     }
@@ -94,7 +96,7 @@
         padding: 15px;
     }
 
-    .wishlist-button:hover, .wishlist-button a:hover {
+    .wishlist-button:hover, .wishlist-button:hover {
         cursor: pointer;
         background: #FFF;
     }
@@ -122,6 +124,11 @@
         display: inline-flex;
         margin: 0 5px;
         padding: 14px 0;
+    }
+
+    #top-bar li:hover{
+        opacity: 0.4;
+        cursor: pointer;
     }
 
     #top-bar li img {
@@ -165,6 +172,16 @@
 
      .el-menu-item:hover {
         border-bottom: 5px solid gray;
+    }
+
+    .el-menu--horizontal>.el-menu-item:hover, .el-menu--horizontal>.el-submenu.is-active .el-submenu__title, .el-menu--horizontal>.el-submenu:hover .el-submenu__title {
+        border-bottom: 5px solid #eef1f6;
+        color: #6b6b6b;
+        background: #eef1f6;
+    }
+
+    .el-menu-item.is-active {
+        color: #333;
     }
 </style>
 

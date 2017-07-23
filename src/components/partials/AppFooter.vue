@@ -5,10 +5,10 @@
                 <div class="footer__social">
                     <h1 class="footer__heading">השארו מחוברים</h1>
                     <!-- Social Icons -->
-                    <a href="#" class="footer__social__icon icon-youtube-inverted"></a>
-                    <a href="#" class="footer__social__icon icon-vimeo-inverted"></a>
-                    <a href="#" class="footer__social__icon icon-instagram-inverted"></a>
-                    <a href="#" class="footer__social__icon icon-facebook-inverted"></a>
+                    <a href="#" class="smooth footer__social__icon icon-youtube-inverted"></a>
+                    <a href="#" class="smooth footer__social__icon icon-vimeo-inverted"></a>
+                    <a href="#" class="smooth footer__social__icon icon-instagram-inverted"></a>
+                    <a href="#" class="smooth footer__social__icon icon-facebook-inverted"></a>
                 </div>
             </div>
             <div class="col footer-img">
@@ -26,7 +26,7 @@
         </div>
         <el-row class="footer-form" justify="center" type="flex">
             <el-col :span="8">
-                <h1 class="footer__heading" >השאירו הודעה</h1>
+                <h1 class="footer__heading form__heading" >השאירו הודעה</h1>
                 <img class="form_border" src="../../assets/images/left-border.png">
                 <el-form >
                     <el-form-item>
@@ -58,7 +58,7 @@
                         <button type="primary" class="submit_button">שלח</button>
                     </el-form-item>
                 </el-form>
-                <img class="form_border" src="../../assets/images/right-border.png">
+                <img class="form_border second" src="../../assets/images/right-border.png">
             </el-col>
         </el-row>
         <div id="sub-footer">
@@ -97,6 +97,9 @@
         margin: 0 10px;
         display: inline-block;
     }
+    .footer__social__icon:hover{
+        opacity:0.6;
+    }
     .footer-img{
         background-image: url(../../assets/images/home_background.jpg);
         background-size: cover;
@@ -106,13 +109,17 @@
         font: 400 54px "BoeiManali", sans-serif;
         color: #EB5884;
     }
+    #form__heading .footer__heading{
+        float: right;
+        margin: 10px 0;
+    }
     .footer_form .footer__heading{
         text-align: right;
     }
     .footer-form{
         background: antiquewhite;
     }
-    .form_border:nth-child(1){
+    img.form_border.second{
         position: absolute;
         right: 28%;
         bottom: 0;
@@ -120,7 +127,7 @@
     .form_border:nth-child(2){
         position: absolute;
         left: 28%;
-        top: 12.5%;
+        top: 6.5%;
     }
     #sub-footer{
         padding: 10px;

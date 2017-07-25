@@ -2,9 +2,9 @@
     <div id="home">
         <div class="row">
             <div class="hero-img">
-                <div class="hero-text">היום שלכם
+                <div class="hero-text main__headline">היום שלכם
                     <hr class="title_seperator">
-                    הספקים שלנו
+                                הספקים שלנו
                 </div>
             </div>
         </div>
@@ -13,10 +13,10 @@
             <el-row justify="center" type="flex">
                 <el-col v-for="category in categories" v-bind:key="category" :span="4">
                     <div class="grid-content bg-purple">
-                        <router-link :to="category.link">
-                        <div class="category-box smooth">
-                            <h2>{{category.name}}</h2>
-                        </div>
+                        <router-link to="/suppliers" @click.native="storeCategory(category)">
+                            <div class="category-box smooth">
+                                <h2>{{category.category_name}}</h2>
+                            </div>
                         </router-link>
                         <div class="slogan"><p>{{category.slogan}}</p></div>
                     </div>
@@ -24,8 +24,8 @@
             </el-row>
         </div>
 
-        <!--space for recommendations-->
-        <recommendations></recommendations>
+        <!--space for testimonials-->
+        <testimonials></testimonials>
 
         <div class="row">
             <h1 class="section__headline">השראות</h1>
@@ -48,17 +48,17 @@
 <script>
     export default {
         components: {
-            'recommendations': require('./Recommendations.vue')
+            'testimonials': require('./Testimonials.vue')
         },
         data () {
             return {
                 Acontent: '',
                 name: 'Welcome to Your Vue.js App',
                 categories: [
-                    {name: 'מוזיקה', slogan: 'נבחרת הדיג׳ייס שתעשה לכם שמח בחתונה', link: '/suppliers?cat=מוזיקה'},
-                    {name: 'אטרקציות וגימיקים', slogan: 'אטרקציות וגימיקים לשדרוג האירוע', link: '/suppliers?cat=גימיקים'},
-                    {name: 'צילום וידאו', slogan: 'צלמי הוידאו שיהפכו אתכם לכוכבי הסרט', link: '/suppliers?cat=וידאו'},
-                    {name: 'צילום סטילס', slogan: 'נבחרת הצלמים שיתעדו לכם אירוע בלתי נשכח', link: '/suppliers?cat=סטילס'}
+                    {category_id: 17,category_name: 'מוזיקה', slogan: 'נבחרת הדיג׳ייס שתעשה לכם שמח בחתונה'},
+                    {category_id: 18,category_name: 'אטרקציות וגימיקים', slogan: 'אטרקציות וגימיקים לשדרוג האירוע'},
+                    {category_id: 15,category_name: 'צילום וידאו', slogan: 'צלמי הוידאו שיהפכו אתכם לכוכבי הסרט'},
+                    {category_id: 16,category_name: 'צילום סטילס',slogan: 'נבחרת הצלמים שיתעדו לכם אירוע בלתי נשכח'}
                 ]
             }
         },
@@ -73,6 +73,9 @@
                     .catch(
                         (error) => console.log(error)
                     )
+            },
+            storeCategory(category){
+                this.$store.commit('storeCategory', category)
             }
         }
     }
@@ -85,15 +88,11 @@
         background-image: url(../assets/images/home_background.jpg);
         background-attachment: fixed;
         background-size: cover;
-        min-height: 72vh;
+        min-height: 50vh;
     }
 
-    .hero-text {
-        font-size: 46px;
-        background: rgba(255, 255, 255, 0.2);
-        color: #3a3a3a;
-        position: relative;
-        top: 25vh;
+    .hero-text{
+        top: 15vh;
     }
 
     h2 {

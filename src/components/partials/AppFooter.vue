@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="col-container">
-            <div class="col footer-img">s</div>
+            <div class="col footer-img"></div>
             <div class="col">
                 <h1 class="footer__heading">צרו קשר</h1>
                 <p class="footer__contact__info">התקשרו אלינו</p>
@@ -26,7 +26,7 @@
         </div>
         <el-row class="footer-form" justify="center" type="flex">
             <el-col :span="8">
-                <h1 class="footer__heading form__heading" >השאירו הודעה</h1>
+                <h1 id="form_title" class="footer__heading form__heading" >השאירו הודעה</h1>
                 <img class="form_border" src="../../assets/images/left-border.png">
                 <el-form >
                     <el-form-item>
@@ -86,7 +86,6 @@
         display: table-cell;
         width: 50%;
         padding: 115px 0;
-        /*background-color: #f5f4f2;*/
     }
     .el-form{
         direction: rtl;
@@ -109,13 +108,15 @@
         font: 400 54px "BoeiManali", sans-serif;
         color: #EB5884;
     }
-    #form__heading .footer__heading{
+    #form__heading .footer__heading, #form_title{
         float: right;
         margin: 10px 0;
     }
-    .footer_form .footer__heading{
-        text-align: right;
+    
+    #form_title{
+        font-size: 5rem;
     }
+
     .footer-form{
         background: antiquewhite;
     }
@@ -127,7 +128,7 @@
     .form_border:nth-child(2){
         position: absolute;
         left: 28%;
-        top: 6.5%;
+        top: 17%;
     }
     #sub-footer{
         padding: 10px;
@@ -139,7 +140,7 @@
     .icon-instagram-inverted{background-image: url(../../assets/icons/icon-instagram.png)}
     .icon-facebook-inverted{background-image: url(../../assets/icons/icon-facebook.png)}
     .footer-form{
-        padding-top: 55px;
+        padding-top: 105px;
     }
     .el-checkbox+.el-checkbox{
         margin-right: 15px;

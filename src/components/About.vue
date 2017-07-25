@@ -2,7 +2,7 @@
     <div id="about">
         <el-row align="middle" type="flex">
             <el-col class="hero-img">
-                <h1 class="page__title">קצת עלינו</h1>
+                <h1 class="hero-text main__headline">קצת עלינו</h1>
             </el-col>
         </el-row>
         <el-row justify="center" type="flex">
@@ -31,7 +31,7 @@
 <script>
     export default{
         components: {
-            'recommendations': require('./Recommendations.vue')
+            'recommendations': require('./Testimonials.vue')
         }
     }
 </script>
@@ -49,6 +49,10 @@
         background-attachment: fixed;
         background-size: cover;
         min-height: 40vh;
+    }
+
+    .hero-text {
+        top: 8vh;
     }
 
     .main_content{

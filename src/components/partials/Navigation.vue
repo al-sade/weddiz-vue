@@ -3,12 +3,12 @@
         <div id="top-bar">
             <el-dropdown class="wishlist-button smooth">
                 <el-badge class="item" :value="cart.length">
-                    <span class="el-dropdown-link"><router-link to="/wishlist">WISHLIST<img
+                    <span class="el-dropdown-link frente"><router-link to="/wishlist">WISHLIST<img
                             src="../../assets/images/icon-heart.png"></router-link></span>
                 </el-badge>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item v-for="(supplier, index) in    cart" v-bind:key="index">
-                        <i class="el-icon-close" @click="removeItem(index)"></i> {{supplier.name}} |  {{supplier.price}}
+                    <el-dropdown-item v-for="(supplier, index) in cart" v-bind:key="index">
+                        <i class="el-icon-close" @click="removeItem(index)"></i> {{supplier.name}} | {{supplier.price}}
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -27,17 +27,9 @@
             <el-menu-item index="1">
                 <router-link to="/recommendations">המלצות</router-link>
             </el-menu-item>
-            <el-menu-item index="1">
-                <router-link to="/suppliers?cat=גימיקים">אטרקציות וגימיקים</router-link>
-            </el-menu-item>
-            <el-menu-item index="1">
-                <router-link to="/suppliers?cat=מוזיקה">מוזיקה</router-link>
-            </el-menu-item>
-            <el-menu-item index="1">
-                <router-link to="/suppliers?cat=וידאו">וידאו</router-link>
-            </el-menu-item>
-            <el-menu-item index="1">
-                <router-link to="/suppliers?cat=סטילס">סטילס</router-link>
+            <el-menu-item index="1" v-for="category in $store.getters.getCategories">
+                <router-link :to="{path: 'suppliers' , query: {q_category: category[0]}}">{{category.category_name}}
+                </router-link>
             </el-menu-item>
             <el-menu-item index="1">
                 <router-link to="/about">אודות</router-link>
@@ -54,6 +46,7 @@
         name: 'navigation',
         data () {
             return {
+                categories: this.$store.getters.getCategories,
                 cart: this.$store.getters.getCart,
                 activeIndex: '1',
                 activeIndex2: '1'
@@ -62,6 +55,9 @@
         methods: {
             removeItem(item){
                 this.cart.splice(item, 1)
+            },
+            storeCategory(category){
+                this.$store.commit('storeCategory', category)
             }
         }
     }
@@ -126,7 +122,7 @@
         padding: 14px 0;
     }
 
-    #top-bar li:hover{
+    #top-bar li:hover {
         opacity: 0.4;
         cursor: pointer;
     }
@@ -170,11 +166,11 @@
         border-radius: 0px;
     }
 
-     .el-menu-item:hover {
+    .el-menu-item:hover {
         border-bottom: 5px solid gray;
     }
 
-    .el-menu--horizontal>.el-menu-item:hover, .el-menu--horizontal>.el-submenu.is-active .el-submenu__title, .el-menu--horizontal>.el-submenu:hover .el-submenu__title {
+    .el-menu--horizontal > .el-menu-item:hover, .el-menu--horizontal > .el-submenu.is-active .el-submenu__title, .el-menu--horizontal > .el-submenu:hover .el-submenu__title {
         border-bottom: 5px solid #eef1f6;
         color: #6b6b6b;
         background: #eef1f6;

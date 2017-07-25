@@ -3,7 +3,7 @@
 
         <el-row align="middle" type="flex">
             <el-col class="hero-img">
-                <h1 class="page__title"></h1>
+                <h1 class="hero-text main__headline">שם הקטגוריה</h1>
             </el-col>
         </el-row>
 
@@ -34,8 +34,8 @@
                 v-for="i in Math.ceil(count_suppliers / 4)"
                 v-bind:key="i"
                 justify="center" type="flex">
-            <el-col v-for="supplier in suppliers.slice((i - 1) * 4, i * 4)" v-bind:key="supplier" :span="5">
-                <router-link :to="'/supplier?id='+supplier.supplier_id">
+            <el-col v-for="(supplier, index) in $store.getters.getSuppliers" v-bind:key="supplier" :span="5">
+                <router-link :to="{path: 'supplier' , query: {q_supplier: supplier}}">
                     <el-card>
                         <el-button type="text" class="button" @click="addSupplier(supplier)">Add to Wishlist</el-button>
                         <img src="../assets/images/logo.png" class="image">
@@ -43,8 +43,8 @@
                             <span>{{supplier.first_name + ' ' + supplier.last_name}}</span>
                             <div class="bottom clearfix">
                                 <div class="time">
-                                    <i v-for="i in supplier.rank" class="el-icon-star-on"></i>
                                     <i v-for="i in (5-supplier.rank)" class="el-icon-star-off"></i>
+                                    <i v-for="i in supplier.rank" class="el-icon-star-on"></i>
                                 </div>
                             </div>
                         </div>
@@ -60,10 +60,10 @@
 <script>
     export default {
         components: {
-            'recommendations': require('./Recommendations.vue')
+            'recommendations': require('./Testimonials.vue')
         },
         mounted() {
-            this.getSuppliers()
+            this.setSuppliers()
         },
         data () {
             return {
@@ -78,14 +78,23 @@
                 }
             }
         },
-
         methods: {
-            getSuppliers() {
-                this.$http.get('http://localhost:8000/api/supplier/22')
+            addSupplier(item){
+                let name = item.first_name + ' ' + item.last_name
+                this.$notify({
+                    title: name,
+                    message: 'נוסף בהצלחה',
+                    type: 'success'
+                });
+                this.cart.push({name: name, price: item})
+            },
+            setSuppliers() {
+                let category_id = this.$store.getters.getCategory.category_id
+                this.$http.get(`http://localhost:8000/api/suppliers/15`)
                     .then(
                         (response) => {
                             this.suppliers = response.body.data
-//                            console.log(this.suppliers)
+                            this.$store.commit('storeSuppliers', this.suppliers)
                             this.count_suppliers = Object.keys(this.suppliers).length
                             this.rows = this.suppliers
                         }
@@ -93,15 +102,12 @@
                     .catch(
                         (error) => console.log(error)
                     )
-            },
-            addSupplier(item){
-                this.$notify({
-                    title: item.first_name + ' ' + item.last_name,
-                    message: 'נוסף בהצלחה',
-                    type: 'success'
-                });
-                this.cart.push({name: 'john'})
-                console.log(this.cart)
+            }
+        },
+        computed: {
+            _category(){
+                this.category= this.$route.query.q_category
+                return this.category
             }
         }
 
@@ -115,7 +121,10 @@
         background-image: url(../assets/images/home_background.jpg);
         background-attachment: fixed;
         background-size: cover;
-        min-height: 72vh;
+        min-height: 40vh;
+    }
+    .hero-text {
+        top: 9vh;
     }
 
     .el-carousel {
@@ -153,7 +162,7 @@
         padding-bottom: 55px;
     }
 
-    #recommendations{
+    #recommendations {
         padding: 55px 0;
         background: rgba(250, 235, 215, 0.46);
     }

@@ -17,13 +17,25 @@
     export default {
         name: 'app',
         data () {
-            return {
+            return {}
+        },
+        methods: {
+            setCategories(){
+                this.$http.get(`http://localhost:8000/api/categories`)
+                    .then((res) => {
+                        this.$store.commit('storeCategories', res.body.data)
+                    })
+                    .catch((error) =>
+                        console.log(error)
+                    )
             }
         },
-        methods: {},
         components: {
             "navigation": require("./components/partials/Navigation.vue"),
             "app-footer": require("./components/partials/AppFooter.vue")
+        },
+        mounted(){
+            this.setCategories()
         }
     }
 </script>

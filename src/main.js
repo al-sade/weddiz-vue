@@ -14,11 +14,20 @@ import About from '@/components/About'
 import Suppliers from '@/components/Suppliers'
 import Supplier from '@/components/Supplier'
 import Wishlist from '@/components/Wishlist'
+import Recommendations from '@/components/Recommendations'
 import Contact from '@/components/Contact'
+import * as VueGoogleMaps from 'vue2-google-maps';
 
 Vue.use(VueResource)
 Vue.use(Router)
 Vue.use(ElementUI)
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: 'AIzaSyAglKokv0qPiBhuRKhPQ813z3m70iDykiI',
+        v: '0.1',
+        // libraries: 'places', //// If you need to use place input
+    }
+});
 
 Vue.config.productionTip = false
 
@@ -28,7 +37,8 @@ const routes = [
     {path: '/suppliers', component: Suppliers},
     {path: '/supplier', component: Supplier},
     {path: '/wishlist', component: Wishlist},
-    {path: '/contact', component: Contact}
+    {path: '/contact', component: Contact},
+    {path: '/recommendations', component: Recommendations},
 ]
 
 const router = new Router({routes})

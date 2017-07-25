@@ -1,3 +1,63 @@
+/* ---------------------------------------------- /*
+ *                    Fonts
+/* ---------------------------------------------- */
+
+@font-face {
+    font-family: "Heebo";
+    src: url("../fonts/Heebo-Light.ttf");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "Heebo";
+    src: url("../fonts/Heebo-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Heebo";
+    src: url("../fonts/Heebo-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Frente";
+    src: url("../fonts/FrenteH1-Regular.otf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "BoeiManali";
+    src: url("../fonts/FbBoeiManali-Regular.otf");
+    font-weight: 400;
+}
+
+
+
+/* ---------------------------------------------- /*
+ *                    Main
+/* ---------------------------------------------- */
+
+
+.hero-text {
+    position: relative;
+    top: 15vh;
+}
+
+.main__headline {
+    font: 400 70px "BoeiManali", sans-serif;
+    font-size: 7em;
+    line-height: 30px;
+    color: white;
+    text-shadow: 2px 6px 8px #333;
+}
+@media (min-width: 768px){
+    .main__headline {
+    }
+    font-size: 110px;
+    line-height: 60px;
+}
+
 .section__headline {
     margin-top: 0px;
     padding-top: 30px;
@@ -42,4 +102,15 @@
     -moz-transition: .5s;
     -webkit-transition: .5s;
     transition: .5s;
+}
+
+.frente{
+    font-family: Frente;
+    font-size: 36px !important;
+}
+
+.frente img{
+    position: relative;
+    bottom: 5px;
+    left: 5px;
 }

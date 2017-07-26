@@ -8,7 +8,7 @@
                 </el-badge>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item v-for="(supplier, index) in cart" v-bind:key="index">
-                        <i class="el-icon-close" @click="removeItem(index)"></i> {{supplier.name}} | {{supplier.price}}
+                        <i class="el-icon-close" @click="removeItem(index)"></i> {{supplier.name}}
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -66,6 +66,10 @@
 <style>
     @import "../../assets/css/style.css";
 
+    #recommendations{
+        background-color: #FFF !important;
+        background-image: none !important;
+    }
     body {
         margin: 0px !important;
     }
@@ -88,8 +92,8 @@
     .wishlist-button {
         box-shadow: inset 0px 0px 10px -2px #333333;
         float: left;
-        background: #2dc0ff;
-        padding: 15px;
+        background: #8ff3bc;
+        padding: 8px 20px;
     }
 
     .wishlist-button:hover, .wishlist-button:hover {

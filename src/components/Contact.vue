@@ -66,7 +66,7 @@
 
     .visit_us{
         position: relative;
-        top:10vh;
+        top:5vh;
     }
     
     .visit_us p{

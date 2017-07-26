@@ -18,7 +18,7 @@
                         <i class="testimonial__icon icon-headset-bg"></i>
                     </div class="box-column">
                     <div class="box-column right-box">
-                        <img src="../assets/images/testimonial-img.jpg">
+                        <img class="testimonial-img" src="../assets/images/testimonial-img.jpg">
                     </div class="box-column">
                     <div class="box-column arrow smooth" :span="2">
                         <img src="../assets/images/arrow-right.png" @click="scrollRight">
@@ -99,6 +99,20 @@
     .arrow:nth-child(1) {
         text-align: left;
     }
+    .testimonial-img{
+        border-radius: 50%;
+        -webkit-transition: -webkit-transform .8s ease-in-out;
+        transition: transform .8s ease-in-out;
+        -webkit-filter: grayscale(62%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(62%);
+    }
+
+    .testimonial-img:hover {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+
+
 
 </style>
 

@@ -56,14 +56,18 @@
 </script>
 
 <style scoped>
+
+    #recommendations{
+        padding: 0px !important;
+    }
+
     .recommendations-box {
         direction: rtl;
-        background-image: url(../assets/images/pattern.jpg);
         padding: 55px 0;
     }
 
-    .recommendations-box{
-        background-color: rgba(0,0,0,0.8);
+    .recommendations-box {
+        background-image: url(../assets/images/pattern.jpg);
     }
 
     .recommendations-box a {
@@ -77,9 +81,10 @@
         min-height: 40vh;
     }
 
-    .hero-text{
+    .hero-text {
         top: 10vh;
     }
+
     .el-card {
         margin: 20px;
     }
@@ -108,11 +113,11 @@
         color: white;
         text-shadow: 1px 1px 5px #333;
     }
-    .title_sep{
+
+    .title_sep {
         color: #FFF;
-        border-bottom:1px solid #FFF;
+        border-bottom: 1px solid #FFF;
     }
-    
 
 
 </style>

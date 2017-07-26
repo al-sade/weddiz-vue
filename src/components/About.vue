@@ -40,7 +40,7 @@
     @import "../assets/css/style.css";
 
     #recommendations {
-        background-image: url(../assets/images/pattern.jpg);
+        background-image: url(../assets/images/pattern.jpg) !important;
         padding: 30px 0 75px;
     }
 

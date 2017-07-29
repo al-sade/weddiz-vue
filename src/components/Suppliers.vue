@@ -3,7 +3,7 @@
 
         <el-row align="middle" type="flex">
             <el-col class="hero-img">
-                <h1 class="hero-text main__headline">שם הקטגוריה</h1>
+                <h1 class="hero-text main__headline">{{_category.category_name}}</h1>
             </el-col>
         </el-row>
 
@@ -33,7 +33,7 @@
         </el-row>
 
         <el-row class="suppliers-box">
-            <el-col v-for="(supplier, index) in $store.getters.getSuppliers" v-bind:key="supplier" :push="2" :span="5">
+            <el-col v-for="(supplier, index) in suppliers" v-bind:key="supplier" :push="2" :span="5">
                     <el-card>
                         <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                             <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
@@ -62,8 +62,8 @@
         components: {
             'recommendations': require('./Testimonials.vue')
         },
-        mounted() {
-            this.setSuppliers()
+        mounted(){
+            this.getSuppliers()
         },
         data () {
             return {
@@ -88,15 +88,17 @@
                 });
                 this.cart.push({name: name, price: item})
             },
-            setSuppliers() {
-                let category_id = this.$store.getters.getCategory.category_id
-                this.$http.get(`http://localhost:8000/api/suppliers`)
+            getSuppliers(){
+                let category_id = this.$route.query.category.category_id
+                this.$http.get(`http://localhost:8000/api/suppliers/${category_id}`)
                     .then(
                         (response) => {
                             this.suppliers = response.body.data
-                            this.$store.commit('storeSuppliers', this.suppliers)
+                            console.log(this.suppliers)
                             this.count_suppliers = Object.keys(this.suppliers).length
                             this.rows = this.suppliers
+
+                            return response.body.data
                         }
                     )
                     .catch(
@@ -106,9 +108,10 @@
         },
         computed: {
             _category(){
-                this.category = this.$route.query.q_category
+                this.category = this.$route.query.category
                 return this.category
             }
+
         }
 
     }

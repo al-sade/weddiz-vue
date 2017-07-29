@@ -13,7 +13,7 @@
             <el-row justify="center" type="flex">
                 <el-col v-for="category in categories" v-bind:key="category" :span="4">
                     <div class="grid-content bg-purple">
-                        <router-link to="/suppliers" @click.native="storeCategory(category)">
+                            <router-link :to="{path: 'suppliers' , query: {category: category}}">
                             <div class="category-box smooth">
                                 <h2>{{category.category_name}}</h2>
                             </div>

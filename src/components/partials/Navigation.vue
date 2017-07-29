@@ -27,9 +27,8 @@
             <el-menu-item index="1">
                 <router-link to="/recommendations">המלצות</router-link>
             </el-menu-item>
-            <el-menu-item index="1" v-for="category in $store.getters.getCategories">
-                <router-link :to="{path: 'suppliers' , query: {q_category: category[0]}}">{{category.category_name}}
-                </router-link>
+            <el-menu-item index="1" v-for="category in categories">
+                <router-link :to="{path: '/suppliers' , query: {category: category}}">{{category.category_name}}</router-link>
             </el-menu-item>
             <el-menu-item index="1">
                 <router-link to="/about">אודות</router-link>
@@ -49,7 +48,13 @@
                 categories: this.$store.getters.getCategories,
                 cart: this.$store.getters.getCart,
                 activeIndex: '1',
-                activeIndex2: '1'
+                activeIndex2: '1',
+                categories: [
+                    {category_id: 17,category_name: 'מוזיקה', slogan: 'נבחרת הדיג׳ייס שתעשה לכם שמח בחתונה'},
+                    {category_id: 18,category_name: 'אטרקציות וגימיקים', slogan: 'אטרקציות וגימיקים לשדרוג האירוע'},
+                    {category_id: 15,category_name: 'צילום וידאו', slogan: 'צלמי הוידאו שיהפכו אתכם לכוכבי הסרט'},
+                    {category_id: 16,category_name: 'צילום סטילס',slogan: 'נבחרת הצלמים שיתעדו לכם אירוע בלתי נשכח'}
+                ]
             }
         },
         methods: {

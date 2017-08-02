@@ -13,6 +13,7 @@
                     <el-form :inline="true" :model="formInline" class="demo-form-inline">
                         <el-form-item>
                             <el-select v-model="formInline.region" placeholder="מיקום">
+                                <el-option label="הכל" value="all"></el-option>
                                 <el-option label="מרכז" value="מרכז"></el-option>
                                 <el-option label="צפון" value="צפון"></el-option>
                                 <el-option label="דרום" value="דרום"></el-option>
@@ -20,11 +21,12 @@
                         </el-form-item>
                         <el-form-item>
                             <el-select v-model="formInline.price" placeholder="מחיר">
-                                <el-option label="0-1500" value="1500"></el-option>
-                                <el-option label="1501-30000" value="3000"></el-option>
-                                <el-option label="3001-4500" value="4500"></el-option>
-                                <el-option label="4501-6000" value="6000"></el-option>
-                                <el-option label="6000+" value="6001"></el-option>
+                                <el-option label="הכל"  value="0"></el-option>
+                                <el-option label="1500"  value="1500"></el-option>
+                                <el-option label="3000"  value="3000"></el-option>
+                                <el-option label="4500"  value="4500"></el-option>
+                                <el-option label="6000"  value="6000"></el-option>
+                                <el-option label="6000+" value="6001">6000+</el-option>
                             </el-select>
                         </el-form-item>
                     </el-form>
@@ -32,16 +34,16 @@
             </el-col>
         </el-row>
 
-        <el-row class="suppliers-box">
-            <el-col v-for="supplier in suppliers" v-bind:key="supplier" :push="2" :span="5">
-                    <el-card>
-                        <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
-                            <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
-                        </el-button>
-                <router-link :to="{path: 'supplier' , query: {q_supplier: supplier}}">
+        <el-row class="suppliers-box" justify="right" type="flex">
+            <el-col v-for="supplier in suppliers" v-bind:key="supplier" :pull="2" :span="5">
+                <el-card v-if="supplier.price >= formInline.price">
+                    <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
+                        <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
+                    </el-button>
+                    <router-link :to="{path: 'supplier' , query: {q_supplier: supplier}}">
                         <img src="../assets/images/Photographer.jpg" class="image smooth">
                         <div style="padding: 14px;">
-                            <span class="boei">{{supplier.first_name + ' ' + supplier.last_name}}</span>
+                            <span class="boei">{{supplier.location + ' ' + supplier.last_name}}</span>
                             <div class="bottom clearfix">
                                 <div class="time">
                                     <i v-for="i in supplier.rank" class="el-icon-star-on"></i>
@@ -49,8 +51,8 @@
                                 </div>
                             </div>
                         </div>
-                </router-link>
-                    </el-card>
+                    </router-link>
+                </el-card>
             </el-col>
         </el-row>
         <recommendations></recommendations>
@@ -61,9 +63,6 @@
     export default {
         components: {
             'recommendations': require('./Testimonials.vue')
-        },
-        mounted(){
-          this.getSuppliers()
         },
         data () {
             return {
@@ -94,11 +93,6 @@
                     .then(
                         (response) => {
                             this.suppliers = response.body.data
-                            console.log(response.body.data)
-//                            this.count_suppliers = Object.keys(this.suppliers).length
-//                            this.rows = this.suppliers
-//
-//                            return response.body.data
                         }
                     )
                     .catch(
@@ -109,9 +103,9 @@
         computed: {
             _category(){
                 this.category = this.$route.query.category
+                this.getSuppliers()
                 return this.category
             }
-
         }
 
     }
@@ -174,11 +168,12 @@
         padding: 55px 0;
         background: rgba(250, 235, 215, 0.46);
     }
-    
-    .boei{
+
+    .boei {
         font-size: 2rem;
     }
-    .boei, i{
+
+    .boei, i {
         color: #3a3a3a;
     }
 </style>

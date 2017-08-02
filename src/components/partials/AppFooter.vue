@@ -84,11 +84,15 @@
     .col {
         display: table-cell;
         width: 50%;
-        padding: 115px 0;
+        padding: 115px  0;
     }
 
     .el-form {
         direction: rtl;
+    }
+
+    div#footer {
+        background: linear-gradient(141deg, #f6f5f3 0%, #e6eeef 51%, #f6f5f3 75%);
     }
 
     .footer__social__icon {

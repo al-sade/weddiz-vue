@@ -14,8 +14,8 @@
             </el-col>
         </el-row>
 
-        <el-row :justify="center" type="flex">
-            <el-col :span="16" :push="4" class="carousel">
+        <el-row justify="center" type="flex">
+            <el-col :span="16"  class="carousel">
                 <el-carousel :interval="4000" type="card" height="300px">
                     <el-carousel-item v-for="item in 6" :key="item">
                         <h3>{{ item }}</h3>

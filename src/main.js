@@ -21,13 +21,13 @@ import * as VueGoogleMaps from 'vue2-google-maps';
 Vue.use(VueResource)
 Vue.use(Router)
 Vue.use(ElementUI)
-Vue.use(VueGoogleMaps, {
-    load: {
-        key: 'AIzaSyAglKokv0qPiBhuRKhPQ813z3m70iDykiI',
-        v: '0.1',
-        // libraries: 'places', //// If you need to use place input
-    }
-});
+// Vue.use(VueGoogleMaps, {
+//     load: {
+//         key: 'AIzaSyAglKokv0qPiBhuRKhPQ813z3m70iDykiI',
+//         v: '0.1',
+//         // libraries: 'places', //// If you need to use place input
+//     }
+// });
 
 Vue.config.productionTip = false
 

@@ -27,7 +27,7 @@
             <el-menu-item index="1">
                 <router-link to="/recommendations">המלצות</router-link>
             </el-menu-item>
-            <el-menu-item index="1" v-for="category in categories">
+            <el-menu-item index="1" v-for="(category, index) in categories" v-bind:key="index">
                 <router-link :to="{path: '/suppliers' , query: {category: category}}">{{category.category_name}}</router-link>
             </el-menu-item>
             <el-menu-item index="1">

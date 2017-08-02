@@ -33,7 +33,7 @@
         </el-row>
 
         <el-row class="suppliers-box">
-            <el-col v-for="(supplier, index) in suppliers" v-bind:key="supplier" :push="2" :span="5">
+            <el-col v-for="supplier in suppliers" v-bind:key="supplier" :push="2" :span="5">
                     <el-card>
                         <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                             <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
@@ -63,12 +63,12 @@
             'recommendations': require('./Testimonials.vue')
         },
         mounted(){
-            this.getSuppliers()
+          this.getSuppliers()
         },
         data () {
             return {
                 cart: this.$store.getters.getCart,
-                suppliers: '',
+                suppliers: [],
                 count_suppliers: '',
                 rows: '',
                 data: '',
@@ -94,11 +94,11 @@
                     .then(
                         (response) => {
                             this.suppliers = response.body.data
-                            console.log(this.suppliers)
-                            this.count_suppliers = Object.keys(this.suppliers).length
-                            this.rows = this.suppliers
-
-                            return response.body.data
+                            console.log(response.body.data)
+//                            this.count_suppliers = Object.keys(this.suppliers).length
+//                            this.rows = this.suppliers
+//
+//                            return response.body.data
                         }
                     )
                     .catch(

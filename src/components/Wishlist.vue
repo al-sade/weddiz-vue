@@ -21,7 +21,7 @@
                         <el-input v-model="form.date" type="date"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-input placeholder="ספרו לנו עליכם" type="textarea" v-model="form.desc" rows="5"></el-input>
+                        <el-input placeholder="ספרו לנו עליכם" type="textarea" v-model="form.desc" :rows=5></el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button type="primary" @click="onSubmit">שלח</el-button>
@@ -29,13 +29,14 @@
                 </el-form>
             </el-col>
             <el-col :span="12">
-                <div v-for="category in $store.getters.getCategories">
+                <div v-for="category in $store.getters.getCategories" v-if="catHasSuppliers(category.category_id)">
                     <h1 class="boei category">{{category.category_name}}</h1>
                     <hr class="sep">
                     <div class="cat_suppliers">
-                        <div class="supplier" v-for="(supplier, index) in  cart" v-bind:key="index">
+                        <div class="supplier" v-for="(supplier, index) in  cart" v-bind:key="index"
+                             v-if="supplier.category_id== category.category_id">
                             <i class="el-icon-close" @click="removeItem(index)"></i>
-                            {{supplier.name}}
+                            {{supplier.first_name + ' ' + supplier.last_name}}
                         </div>
                     </div>
                 </div>
@@ -50,7 +51,7 @@
             return {
                 cart: this.$store.getters.getCart,
                 form: {
-                    fisrt_name: '',
+                    first_name: '',
                     last_name: '',
                     phone: '',
                     email: '',
@@ -64,7 +65,23 @@
                 this.cart.splice(item, 1)
             },
             onSubmit() {
-                console.log('submit!');
+                this.$http.post('http://localhost:8000/api/mail', {"form_data": this.form, "suppliers": this.cart})
+                    .then(
+                        (res) => {
+                            console.log(res.body)
+                        }
+                    )
+                    .catch(
+                        (error) => console.log(error)
+                    )
+            },
+            catHasSuppliers(cid){
+                for (let i = 0; i < this.cart.length; i++) {
+                    if(this.cart[i].category_id == cid){
+                        return true
+                    }
+                }
+                return false
             }
         }
     }
@@ -111,7 +128,7 @@
     .supplier {
         text-align: right;
 
-        font-size: 27px;
+        font-size: 32px;
         padding: 10px 0;
     }
 
@@ -125,4 +142,7 @@
         padding-top: 5vh;
     }
 
+    .cat_suppliers h1 {
+        text-align: right;
+    }
 </style>

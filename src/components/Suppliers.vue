@@ -35,7 +35,7 @@
         </el-row>
 
         <el-row class="suppliers-box" justify="right" type="flex">
-            <el-col v-for="supplier in suppliers" v-bind:key="supplier" :pull="2" :span="5">
+            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index" :pull="2" :span="5">
                 <el-card v-if="supplier.price >= formInline.price">
                     <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                         <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
@@ -43,7 +43,7 @@
                     <router-link :to="{path: 'supplier' , query: {q_supplier: supplier}}">
                         <img src="../assets/images/Photographer.jpg" class="image smooth">
                         <div style="padding: 14px;">
-                            <span class="boei">{{supplier.location + ' ' + supplier.last_name}}</span>
+                            <span class="boei">{{supplier.first_name + ' ' + supplier.last_name}}</span>
                             <div class="bottom clearfix">
                                 <div class="time">
                                     <i v-for="i in supplier.rank" class="el-icon-star-on"></i>
@@ -78,14 +78,14 @@
             }
         },
         methods: {
-            addSupplier(item){
-                let name = item.first_name + ' ' + item.last_name
+            addSupplier(supplier){
+                let name = supplier.first_name + ' ' + supplier.last_name
                 this.$notify({
                     title: name,
                     message: 'מחכה לשמוע מכם',
                     type: 'success'
                 });
-                this.cart.push({name: name, price: item})
+                this.cart.push(supplier)
             },
             getSuppliers(){
                 let category_id = this.$route.query.category.category_id

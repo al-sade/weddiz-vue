@@ -8,7 +8,8 @@
                 </el-badge>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item v-for="(supplier, index) in cart" v-bind:key="index">
-                        <i class="el-icon-close" @click="removeItem(index)"></i> {{supplier.name}}
+                        <i class="el-icon-close" @click="removeItem(index)"></i>
+                        {{supplier.first_name + ' ' + supplier.last_name}}
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -63,6 +64,11 @@
             },
             storeCategory(category){
                 this.$store.commit('storeCategory', category)
+            }
+        },
+        computed: {
+            test(){
+                console.log(this.$store.getters.getCart)
             }
         }
     }

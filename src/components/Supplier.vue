@@ -31,13 +31,15 @@
 
         <recommendations></recommendations>
 
+        <albums :supplier_id="this.supplier.supplier_id"></albums>
     </div>
 </template>
 
 <script>
     export default{
         components: {
-            'recommendations': require('./Testimonials.vue')
+            'recommendations': require('./Testimonials.vue'),
+            'albums': require('./partials/Albums.vue')
         },
         data(){
             return {
@@ -46,14 +48,14 @@
             }
         },
         methods: {
-            addSupplier(item){
-                let name = item.first_name + ' ' + item.last_name
+            addSupplier(supplier){
+                let name = supplier.first_name + ' ' + supplier.last_name
                 this.$notify({
                     title: name,
                     message: 'מחכה לשמוע מכם',
                     type: 'success'
                 });
-                this.cart.push({name: name})
+                this.cart.push(supplier)
             }
         },
         computed: {

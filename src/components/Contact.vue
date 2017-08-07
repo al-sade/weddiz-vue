@@ -2,20 +2,20 @@
     <div id="contact">
         <el-row>
             <el-col :span="12">
-                <gmap-map
-                        :center="center"
-                        :zoom="7"
-                        style="width: 100%; height: 300px"
-                >
-                    <gmap-marker
-                            :key="index"
-                            v-for="(m, index) in markers"
-                            :position="m.position"
-                            :clickable="true"
-                            :draggable="true"
-                            @click="center=m.position"
-                    ></gmap-marker>
-                </gmap-map>
+                <!--<gmap-map-->
+                        <!--:center="center"-->
+                        <!--:zoom="7"-->
+                        <!--style="width: 100%; height: 300px"-->
+                <!--&gt;-->
+                    <!--<gmap-marker-->
+                            <!--:key="index"-->
+                            <!--v-for="(m, index) in markers"-->
+                            <!--:position="m.position"-->
+                            <!--:clickable="true"-->
+                            <!--:draggable="true"-->
+                            <!--@click="center=m.position"-->
+                    <!--&gt;</gmap-marker>-->
+                <!--</gmap-map>-->
             </el-col>
             <el-col class="visit_us" :span="12">
                 <h1 class="footer__heading form__heading">בואו לביקור</h1>
@@ -31,12 +31,12 @@
         components: {ElRow},
         data() {
             return {
-                center: {lat: 10.0, lng: 10.0},
-                markers: [{
-                    position: {lat: 10.0, lng: 10.0}
-                }, {
-                    position: {lat: 11.0, lng: 11.0}
-                }]
+//                center: {lat: 10.0, lng: 10.0},
+//                markers: [{
+//                    position: {lat: 10.0, lng: 10.0}
+//                }, {
+//                    position: {lat: 11.0, lng: 11.0}
+//                }]
             }
 
         },

@@ -42,7 +42,6 @@
 </script>
 
 <style scoped>
-    @import "../../assets/lunar_assets/lunar.css";
 
     .time {
         font-size: 13px;

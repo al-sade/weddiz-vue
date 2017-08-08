@@ -64,7 +64,7 @@
         },
         methods: {
             onSubmitted() {
-                this.$http.post('http://localhost:8000/api/supplier', {content: this.Acontent})
+                this.$http.post('http://public.weddiz.co.il/api/supplier', {content: this.Acontent})
                     .then(
                         (response) => {
                             this.name = response.body

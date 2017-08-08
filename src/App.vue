@@ -21,7 +21,7 @@
         },
         methods: {
             setCategories(){
-                this.$http.get(`http://localhost:8000/api/categories`)
+                this.$http.get(`http://public.weddiz.co.il/api/categories`)
                     .then((res) => {
                         this.$store.commit('storeCategories', res.body.data)
                     })

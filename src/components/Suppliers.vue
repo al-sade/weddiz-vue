@@ -89,7 +89,7 @@
             },
             getSuppliers(){
                 let category_id = this.$route.query.category.category_id
-                this.$http.get(`http://localhost:8000/api/suppliers/${category_id}`)
+                this.$http.get(`http://public.weddiz.co.il/api/suppliers/${category_id}`)
                     .then(
                         (response) => {
                             this.suppliers = response.body.data

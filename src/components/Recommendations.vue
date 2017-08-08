@@ -35,7 +35,7 @@
         },
         methods: {
             getCategories(){
-                this.$http.get('http://localhost:8000/api/recommendations')
+                this.$http.get('http://public.weddiz.co.il/api/recommendations')
                     .then(
                         (res) => {
                             console.log(res.body.data)

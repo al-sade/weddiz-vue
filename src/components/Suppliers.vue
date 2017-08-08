@@ -13,7 +13,7 @@
                     <el-form :inline="true" :model="formInline" class="demo-form-inline">
                         <el-form-item>
                             <el-select v-model="formInline.region" placeholder="מיקום">
-                                <el-option label="הכל" value="all"></el-option>
+                                <el-option label="הכל" value="הכל"></el-option>
                                 <el-option label="מרכז" value="מרכז"></el-option>
                                 <el-option label="צפון" value="צפון"></el-option>
                                 <el-option label="דרום" value="דרום"></el-option>
@@ -35,8 +35,8 @@
         </el-row>
 
         <el-row class="suppliers-box">
-            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index"  push="2" span="5">
-                <el-card v-if="supplier.price >= formInline.price">
+            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index"  :push="2" :span="5">
+                <el-card v-if="supplier.price >= formInline.price && (formInline.region === 'הכל' || formInline.region === supplier.location)">
                     <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                         <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
                     </el-button>

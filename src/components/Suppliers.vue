@@ -34,8 +34,8 @@
             </el-col>
         </el-row>
 
-        <el-row class="suppliers-box" justify="right" type="flex">
-            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index" :pull="2" :span="5">
+        <el-row class="suppliers-box">
+            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index"  push="2" span="5">
                 <el-card v-if="supplier.price >= formInline.price">
                     <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                         <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist

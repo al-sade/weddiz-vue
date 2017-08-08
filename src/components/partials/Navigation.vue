@@ -160,7 +160,7 @@
     }
 
     .el-menu {
-        background-color: #FFF;
+        background-color: #FFF !important;
         border-top: 4px double #d4d7c4;
         border-bottom: 4px double #d4d7c4;
         color: #4dbab4;
@@ -168,12 +168,12 @@
 
     .el-menu a {
         text-decoration: none;
-        color: #8496a2;
+        color: #8496a2 !important;
         font-size: 20px;
     }
 
     .el-menu--horizontal .el-menu-item {
-        float: none;
+        float: none !important;
         display: inline-block;
     }
 

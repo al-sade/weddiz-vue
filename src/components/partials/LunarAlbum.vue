@@ -41,7 +41,7 @@
         mounted: function () {
             console.log(this.album.album);
             try{
-             //   SakuraPlugins.Lunar.getInstance().proxyWrapper();
+                SakuraPlugins.Lunar.getInstance().proxyWrapper();
             }catch (e){
                 console.log(e);
             }

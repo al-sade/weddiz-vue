@@ -13,7 +13,7 @@
 </template>
 
 <script>
-
+    import API from "./constants/api";
     export default {
         name: 'app',
         data () {
@@ -21,7 +21,7 @@
         },
         methods: {
             setCategories(){
-                this.$http.get(`http://public.weddiz.co.il/api/categories`)
+                this.$http.get(API.categories)
                     .then((res) => {
                         this.$store.commit('storeCategories', res.body.data)
                     })

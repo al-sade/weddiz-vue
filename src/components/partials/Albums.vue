@@ -1,42 +1,49 @@
 <template>
     <div id="albums_wrapper">
-        <h1 class="section__headline">אלבומים</h1>
-        <el-row justify="right" type="flex">
-            <el-col :span="6" v-for="(o, index) in 4" :key="o" >
-                <el-card :body-style="{ padding: '0px' }" @click.native="showAlbum(3)">
-                    <img src="../../assets/images/team-video.jpg" class="image">
-                    <div style="padding: 14px;">
-                        <span>{{supplier_id}}</span>
-                        <div class="bottom clearfix">
-                            <el-button type="text" class="button">Operating button</el-button>
-                        </div>
-                    </div>
-                </el-card>
-            </el-col>
-        </el-row>
-
-        <album :supplier_id="{supplier_id}"></album>
-
+        <!--lunar gallery-->
+        <div class="lunar-gallery-ui">
+            <album v-for="album in albums"  :album="{album}" :width="25"></album>
+        </div>
     </div>
 </template>
 
 <script>
 
+    import API from "../../constants/api";
     export default{
         components: {
-            'album': require('./singleAlbum.vue')
+            'album': require('./LunarAlbum.vue'),
+
         },
         props: ['supplier_id'],
         data(){
             return {
-
+                albums : []
             }
+        },
+        ready: function () {
+          this.getSupplierAlbums();
         },
         methods: {
             showAlbum(id){
                 console.log(id)
 
-            }
+            },
+            getSupplierAlbums(){
+                this.$http.get(API.supplierAlbums(this.supplier_id))
+                    .then(
+                        (response) => {
+                            console.log("albums", response.body.data);
+                            this.albums = response.body.data;
+                        }
+                    )
+                    .catch(
+                        (error) => console.log(error)
+                    )
+            },
+        },
+        created(){
+            this.getSupplierAlbums()
         }
     }
 </script>

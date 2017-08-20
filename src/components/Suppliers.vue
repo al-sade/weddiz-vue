@@ -60,6 +60,7 @@
 </template>
 
 <script>
+    import API from "../constants/api";
     export default {
         components: {
             'recommendations': require('./Testimonials.vue')
@@ -89,7 +90,7 @@
             },
             getSuppliers(){
                 let category_id = this.$route.query.category.category_id
-                this.$http.get(`http://public.weddiz.co.il/api/suppliers/${category_id}`)
+                this.$http.get(API.suppliersByCategory(category_id))
                     .then(
                         (response) => {
                             this.suppliers = response.body.data

@@ -8,6 +8,7 @@ import Router from 'vue-router'
 import VueResource from 'vue-resource'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
+import './assets/lunar_assets/lunar.css';
 
 import Home from '@/components/Home'
 import About from '@/components/About'

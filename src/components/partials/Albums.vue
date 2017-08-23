@@ -35,15 +35,28 @@
                         (response) => {
                             console.log("albums", response.body.data);
                             this.albums = response.body.data;
+                            // Lunar needs to manipulate the DOM after all albums are rendered
+                            // maybe there is a better solution but there is no time right now
+                            this.$nextTick(this.dataLoaded);
                         }
                     )
                     .catch(
                         (error) => console.log(error)
                     )
             },
+            dataLoaded(){
+                console.log("data loaded");
+                try{
+                    SakuraPlugins.Lunar.getInstance().proxyWrapper();
+                }catch (e){
+                    console.log(e);
+                }
+            }
         },
+
         created(){
-            this.getSupplierAlbums()
+            this.getSupplierAlbums();
+
         }
     }
 </script>

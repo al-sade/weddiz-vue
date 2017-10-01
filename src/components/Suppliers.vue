@@ -21,12 +21,12 @@
                         </el-form-item>
                         <el-form-item>
                             <el-select v-model="formInline.price" placeholder="מחיר">
-                                <el-option label="הכל"  value="0"></el-option>
-                                <el-option label="1500"  value="1500"></el-option>
-                                <el-option label="3000"  value="3000"></el-option>
-                                <el-option label="4500"  value="4500"></el-option>
-                                <el-option label="6000"  value="6000"></el-option>
-                                <el-option label="6000+" value="6001">6000+</el-option>
+                                <el-option label="הכל" value="1"></el-option>
+                                <el-option label="1500" value="1500"></el-option>
+                                <el-option label="3000" value="3000"></el-option>
+                                <el-option label="4500" value="4500"></el-option>
+                                <el-option label="6000" value="6000"></el-option>
+                                <el-option label="6000+" value="100001">6000+</el-option>
                             </el-select>
                         </el-form-item>
                     </el-form>
@@ -35,15 +35,15 @@
         </el-row>
 
         <el-row class="suppliers-box">
-            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index"  :push="2" :span="5">
-                <el-card v-if="supplier.price >= formInline.price && (formInline.region === 'הכל' || formInline.region === supplier.location)">
+            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index"  v-if="filtered(supplier)" :push="2" :span="5">
+                <el-card>
                     <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                         <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
                     </el-button>
                     <router-link :to="{path: 'supplier' , query: {q_supplier: supplier}}">
                         <img src="../assets/images/Photographer.jpg" class="image smooth">
                         <div style="padding: 14px;">
-                            <span class="boei">{{supplier.first_name + ' ' + supplier.last_name}}</span>
+                            <span class="boei">{{supplier.first_name + ' ' + supplier.location}}</span>
                             <div class="bottom clearfix">
                                 <div class="time">
                                     <i v-for="i in supplier.rank" class="el-icon-star-on"></i>
@@ -54,62 +54,74 @@
                     </router-link>
                 </el-card>
             </el-col>
+            <h1 v-show="!suppliers.length">לא נמצאו ספקים</h1>
         </el-row>
         <recommendations></recommendations>
     </div>
 </template>
 
 <script>
-    import API from "../constants/api";
-    export default {
-        components: {
-            'recommendations': require('./Testimonials.vue')
+  import API from "../constants/api";
+  export default {
+    components: {
+      'recommendations': require('./Testimonials.vue')
+    },
+    data () {
+      return {
+        cart: this.$store.getters.getCart,
+        suppliers: [],
+        count_suppliers: '',
+        rows: '',
+        data: '',
+        formInline: {
+          region: '',
+          price: '1'
         },
-        data () {
-            return {
-                cart: this.$store.getters.getCart,
-                suppliers: [],
-                count_suppliers: '',
-                rows: '',
-                data: '',
-                formInline: {
-                    region: '',
-                    price: ''
-                }
+        category_id: ''
+      }
+    },
+    methods: {
+      addSupplier(supplier){
+        let name = supplier.first_name + ' ' + supplier.last_name
+        this.$notify({
+          title: name,
+          message: 'מחכה לשמוע מכם',
+          type: 'success'
+        });
+        this.cart.push(supplier)
+      },
+      getSuppliers  () {
+        let category_id = this.$route.query.category
+        this.$http.get(API.suppliersByCategory(category_id))
+          .then(
+            (response) => {
+              this.suppliers = response.body.data
             }
-        },
-        methods: {
-            addSupplier(supplier){
-                let name = supplier.first_name + ' ' + supplier.last_name
-                this.$notify({
-                    title: name,
-                    message: 'מחכה לשמוע מכם',
-                    type: 'success'
-                });
-                this.cart.push(supplier)
-            },
-            getSuppliers(){
-                let category_id = this.$route.query.category.category_id
-                this.$http.get(API.suppliersByCategory(category_id))
-                    .then(
-                        (response) => {
-                            this.suppliers = response.body.data
-                        }
-                    )
-                    .catch(
-                        (error) => console.log(error)
-                    )
-            }
-        },
-        computed: {
-            _category(){
-                this.category = this.$route.query.category
-                this.getSuppliers()
-                return this.category
-            }
+          )
+          .catch(
+            (error) => console.log(error)
+          )
+      },
+      filtered (supplier) {
+        if (supplier.price <= this.formInline.price || (this.formInline.price === '1' || this.formInline.region === this.location)) {
+          return true
+        } else {
+          return false
         }
-
+      }
+    },
+    computed: {
+      _category () {
+        this.category = this.$route.query.category
+        this.getSuppliers()
+        return this.category
+      },
+      _suppliers () {
+        return this.suppliers.length
+      }
     }
+
+  }
 </script>
 
 <style scoped>

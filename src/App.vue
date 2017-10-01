@@ -13,31 +13,31 @@
 </template>
 
 <script>
-    import API from "./constants/api";
-    export default {
-        name: 'app',
-        data () {
-            return {}
-        },
-        methods: {
-            setCategories(){
-                this.$http.get(API.categories)
-                    .then((res) => {
-                        this.$store.commit('storeCategories', res.body.data)
-                    })
-                    .catch((error) =>
-                        console.log(error)
-                    )
-            }
-        },
-        components: {
-            "navigation": require("./components/partials/Navigation.vue"),
-            "app-footer": require("./components/partials/AppFooter.vue")
-        },
-        mounted(){
-            this.setCategories()
-        }
+  import API from "./constants/api";
+  export default {
+    name: 'app',
+    data () {
+      return {}
+    },
+    methods: {
+      setCategories(){
+        this.$http.get(API.categories)
+          .then((res) => {
+            this.$store.commit('storeCategories', res.body.data)
+          })
+          .catch((error) =>
+            console.log(error)
+          )
+      }
+    },
+    components: {
+      "navigation": require("./components/partials/Navigation.vue"),
+      "app-footer": require("./components/partials/AppFooter.vue")
+    },
+    mounted(){
+      this.setCategories()
     }
+  }
 </script>
 
 <style>

@@ -4,16 +4,16 @@
             <div class="hero-img">
                 <div class="hero-text main__headline">היום שלכם
                     <hr class="title_seperator">
-                                הספקים שלנו
+                    הספקים שלנו
                 </div>
             </div>
         </div>
         <div class="row">
             <h1 class="section__headline">הנבחרת שלנו</h1>
             <el-row justify="center" type="flex">
-                <el-col v-for="category in categories" v-bind:key="category" :span="4">
+                <el-col v-for="(idx, category) in categories" :key="category" :span="4">
                     <div class="grid-content bg-purple">
-                            <router-link :to="{path: 'suppliers' , query: {category: category}}">
+                        <router-link :to="{path: 'suppliers' , query: {category: category}}">
                             <div class="category-box smooth">
                                 <h2>{{category.category_name}}</h2>
                             </div>
@@ -46,39 +46,39 @@
 </template>
 
 <script>
-    export default {
-        components: {
-            'testimonials': require('./Testimonials.vue')
-        },
-        data () {
-            return {
-                Acontent: '',
-                name: 'Welcome to Your Vue.js App',
-                categories: [
-                    {category_id: 17,category_name: 'מוזיקה', slogan: 'נבחרת הדיג׳ייס שתעשה לכם שמח בחתונה'},
-                    {category_id: 18,category_name: 'אטרקציות וגימיקים', slogan: 'אטרקציות וגימיקים לשדרוג האירוע'},
-                    {category_id: 15,category_name: 'צילום וידאו', slogan: 'צלמי הוידאו שיהפכו אתכם לכוכבי הסרט'},
-                    {category_id: 16,category_name: 'צילום סטילס',slogan: 'נבחרת הצלמים שיתעדו לכם אירוע בלתי נשכח'}
-                ]
+  export default {
+    components: {
+      'testimonials': require('./Testimonials.vue')
+    },
+    data () {
+      return {
+        Acontent: '',
+        name: 'Welcome to Your Vue.js App',
+        categories: [
+          {category_id: 17, category_name: 'מוזיקה', slogan: 'נבחרת הדיג׳ייס שתעשה לכם שמח בחתונה'},
+          {category_id: 18, category_name: 'אטרקציות וגימיקים', slogan: 'אטרקציות וגימיקים לשדרוג האירוע'},
+          {category_id: 15, category_name: 'צילום וידאו', slogan: 'צלמי הוידאו שיהפכו אתכם לכוכבי הסרט'},
+          {category_id: 16, category_name: 'צילום סטילס', slogan: 'נבחרת הצלמים שיתעדו לכם אירוע בלתי נשכח'}
+        ]
+      }
+    },
+    methods: {
+      onSubmitted() {
+        this.$http.post('http://public.weddiz.co.il/api/supplier', {content: this.Acontent})
+          .then(
+            (response) => {
+              this.name = response.body
             }
-        },
-        methods: {
-            onSubmitted() {
-                this.$http.post('http://public.weddiz.co.il/api/supplier', {content: this.Acontent})
-                    .then(
-                        (response) => {
-                            this.name = response.body
-                        }
-                    )
-                    .catch(
-                        (error) => console.log(error)
-                    )
-            },
-            storeCategory(category){
-                this.$store.commit('storeCategory', category)
-            }
-        }
+          )
+          .catch(
+            (error) => console.log(error)
+          )
+      },
+      storeCategory(category){
+        this.$store.commit('storeCategory', category)
+      }
     }
+  }
 </script>
 
 <style scoped lang="css">
@@ -91,7 +91,7 @@
         min-height: 50vh;
     }
 
-    .hero-text{
+    .hero-text {
         top: 15vh;
     }
 

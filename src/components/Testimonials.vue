@@ -9,10 +9,10 @@
                     </div class="box-column">
                     <div class="box-column left-box">
                         <h2 class="testimonial__heading">
-                            {{this.testimonials[current].testimonial_name}}
-                            <span class="testimonial__date">{{testimonials[current].testimonial_date}}</span>
+                            <!--{{this._testimonials.testimonial_name}}-->
+                            <!--<span class="testimonial__date">{{this._testimonials.event_date}}</span>-->
                         </h2>
-                        <p class="testimonial__text">{{testimonials[current].text}}</p>
+                        <!--<p class="testimonial__text">{{this._testimonials.text}}</p>-->
                         <p class="testimonial__providers" style="direction: rtl">ספקי Weddiz שהיו בחתונה:</p>
                         <img class="rel-icon" src="../assets/icons/icon-team-attractions.png">
                         <img class="rel-icon" src="../assets/icons/icon-team-music.png">
@@ -52,13 +52,18 @@
           .then(
             (response) => {
               this.testimonials = response.body.data
-              console.log(this.testimonials )
+//              console.log(this.testimonials)
               return this.testimonials
             }
           )
           .catch(
             (error) => console.log(error)
           )
+      }
+    },
+    computed: {
+      _testimonials () {
+//        return this.testimonials[current]
       }
     },
     mounted () {

@@ -2,63 +2,62 @@
     <div id="albums_wrapper">
         <!--lunar gallery-->
         <div class="lunar-gallery-ui">
-            <album v-for="album in albums"  :album="{album}" :width="25"></album>
+            <album v-for="album in albums" :album="{album}" :key="album" :width="25"></album>
         </div>
     </div>
 </template>
 
 <script>
 
-    import API from "../../constants/api";
-    export default{
-        components: {
-            'album': require('./LunarAlbum.vue'),
+  import API from '../../constants/api';
+  export default{
+    components: {
+      'album': require('./LunarAlbum.vue')
+    },
+    props: ['supplier_id'],
+    data(){
+      return {
+        albums: []
+      }
+    },
+    ready: function () {
+      this.getSupplierAlbums()
+    },
+    methods: {
+      showAlbum(id) {
+        console.log(id)
 
-        },
-        props: ['supplier_id'],
-        data(){
-            return {
-                albums : []
+      },
+      getSupplierAlbums () {
+        this.$http.get(API.supplierAlbums(this.supplier_id))
+          .then(
+            (response) => {
+              console.log("albums", response.body.data);
+              this.albums = response.body.data;
+              // Lunar needs to manipulate the DOM after all albums are rendered
+              // maybe there is a better solution but there is no time right now
+              this.$nextTick(this.dataLoaded);
             }
-        },
-        ready: function () {
-          this.getSupplierAlbums();
-        },
-        methods: {
-            showAlbum(id){
-                console.log(id)
-
-            },
-            getSupplierAlbums(){
-                this.$http.get(API.supplierAlbums(this.supplier_id))
-                    .then(
-                        (response) => {
-                            console.log("albums", response.body.data);
-                            this.albums = response.body.data;
-                            // Lunar needs to manipulate the DOM after all albums are rendered
-                            // maybe there is a better solution but there is no time right now
-                            this.$nextTick(this.dataLoaded);
-                        }
-                    )
-                    .catch(
-                        (error) => console.log(error)
-                    )
-            },
-            dataLoaded(){
-                console.log("data loaded");
-                try{
-                    SakuraPlugins.Lunar.getInstance().proxyWrapper();
-                }catch (e){
-                    console.log(e);
-                }
-            }
-        },
-
-        created(){
-            this.getSupplierAlbums();
-
+          )
+          .catch(
+            (error) => console.log(error)
+          )
+      },
+      dataLoaded(){
+        console.log("data loaded");
+        try {
+          SakuraPlugins.Lunar.getInstance().proxyWrapper();
+        } catch (e) {
+          console.log(e);
         }
+      }
+    },
+
+    created(){
+      this.getSupplierAlbums();
+
     }
+  }
 </script>
 
 <style scoped>

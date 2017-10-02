@@ -13,17 +13,17 @@
             </el-col>
             <el-col :span="8"></el-col>
             <el-col :span="7">
-                <h1>{{_supplier.first_name + ' ' + _supplier.last_name}}</h1>
+                <h1>{{supplier.first_name + ' ' + supplier.last_name}}</h1>
                 <div class="time">
-                    <i v-for="i in (5-_supplier.rank)" class="el-icon-star-off"></i>
-                    <i v-for="i in _supplier.rank" class="el-icon-star-on"></i>
+                    <i v-for="i in _supplierRank" class="el-icon-star-off"></i>
+                    <i v-for="i in supplier.rank" class="el-icon-star-on"></i>
                 </div>
             </el-col>
         </el-row>
         <el-row align="middle" type="flex" class="desc-wrapper">
             <el-col :push="2" :span="19" class="desc">
                 <hr>
-                <p> {{_supplier.desc}}</p>
+                <p> {{supplier.desc}}</p>
                 <hr>
             </el-col>
 
@@ -31,46 +31,64 @@
 
         <recommendations></recommendations>
 
-        <albums :supplier_id="this.supplier.supplier_id"></albums>
+        <albums :supplierId="this.supplier.supplierId"></albums>
     </div>
 </template>
 
 <script>
-    export default{
-        components: {
-            'recommendations': require('./Testimonials.vue'),
-            'albums': require('./partials/Albums.vue')
-        },
-        data(){
-            return {
-                cart: this.$store.getters.getCart,
-                supplier: []
+  import API from '../constants/api'
+
+  export default{
+    components: {
+      'recommendations': require('./Testimonials.vue'),
+      'albums': require('./partials/Albums.vue')
+    },
+    mounted () {
+      let supplierId = this.$route.query.sid
+      this.getSupplier(supplierId)
+    },
+    computed: {
+      _supplierRank () {
+        return typeof this.supplier.rank === 'undefined' ? 0 : 5 - this.supplier.rank
+      }
+    },
+    data () {
+      return {
+        cart: this.$store.getters.getCart,
+        supplierId: '',
+        supplier: []
+      }
+    },
+    methods: {
+      addSupplier(supplier) {
+        let name = supplier.first_name + ' ' + supplier.last_name
+        this.$notify({
+          title: name,
+          message: 'מחכה לשמוע מכם',
+          type: 'success'
+        })
+        this.cart.push(supplier)
+      },
+      getSupplier (supplierId) {
+        this.$http.get(API.supplierById(supplierId))
+          .then(
+            (response) => {
+              this.supplier = response.body.data[supplierId - 1]
             }
-        },
-        methods: {
-            addSupplier(supplier){
-                let name = supplier.first_name + ' ' + supplier.last_name
-                this.$notify({
-                    title: name,
-                    message: 'מחכה לשמוע מכם',
-                    type: 'success'
-                });
-                this.cart.push(supplier)
-            }
-        },
-        computed: {
-            _supplier(){
-                this.supplier = this.$route.query.q_supplier
-                return this.supplier
-            }
-        }
+          )
+          .catch(
+            (error) => console.log(error)
+          )
+      }
     }
+  }
 </script>
 
 <style scoped>
-    #recommendations{
+    #recommendations {
         background-image: url(../assets/images/pattern.jpg) !important;
     }
+
     .hero-img {
         background-image: url(../assets/images/sabah.png);
         background-attachment: fixed;

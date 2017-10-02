@@ -11,7 +11,7 @@
         <div class="row">
             <h1 class="section__headline">הנבחרת שלנו</h1>
             <el-row justify="center" type="flex">
-                <el-col v-for="(idx, category) in categories" :key="category" :span="4">
+                <el-col v-for="category in categories" :key="category.category_id" :span="4">
                     <div class="grid-content bg-purple">
                         <router-link :to="{path: 'suppliers' , query: {category: category}}">
                             <div class="category-box smooth">
@@ -63,7 +63,7 @@
       }
     },
     methods: {
-      onSubmitted() {
+      onSubmitted () {
         this.$http.post('http://public.weddiz.co.il/api/supplier', {content: this.Acontent})
           .then(
             (response) => {

@@ -3,7 +3,7 @@
 
         <el-row align="middle" type="flex">
             <el-col class="hero-img">
-                <h1 class="hero-text main__headline">{{_category.category_name}}</h1>
+                <h1 class="hero-text main__headline">{{_category}}</h1>
             </el-col>
         </el-row>
 
@@ -35,7 +35,8 @@
         </el-row>
 
         <el-row class="suppliers-box">
-            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index"  v-if="filtered(supplier)" :push="2" :span="5">
+            <el-col v-for="(supplier, index) in suppliers" v-bind:key="index" v-if="filtered(supplier)" :push="2"
+                    :span="5">
                 <el-card>
                     <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                         <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
@@ -77,6 +78,12 @@
           region: '',
           price: '1'
         },
+        categories: [
+          {category_id: 17, category_name: 'מוזיקה', slogan: 'נבחרת הדיג׳ייס שתעשה לכם שמח בחתונה'},
+          {category_id: 18, category_name: 'אטרקציות וגימיקים', slogan: 'אטרקציות וגימיקים לשדרוג האירוע'},
+          {category_id: 15, category_name: 'צילום וידאו', slogan: 'צלמי הוידאו שיהפכו אתכם לכוכבי הסרט'},
+          {category_id: 16, category_name: 'צילום סטילס', slogan: 'נבחרת הצלמים שיתעדו לכם אירוע בלתי נשכח'}
+        ],
         category_id: ''
       }
     },
@@ -108,13 +115,19 @@
         } else {
           return false
         }
+      },
+      getCatName (catId) {
+        this.categories.filter(function (obj) {
+          if (obj.category_id === catId) return obj.category_name
+        })
       }
     },
     computed: {
       _category () {
-        this.category = this.$route.query.category
+        let catId = this.$route.query.category
         this.getSuppliers()
-        return this.category
+        var result = this.categories.filter(function (o) { return o.category_id == catId })
+        return result[0].category_name
       },
       _suppliers () {
         return this.suppliers.length

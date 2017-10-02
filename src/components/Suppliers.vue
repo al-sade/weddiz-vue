@@ -41,10 +41,10 @@
                     <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                         <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
                     </el-button>
-                    <router-link :to="{path: 'supplier' , query: {q_supplier: supplier}}">
+                    <router-link :to="{path: 'supplier' , query: {sid: supplier.supplier_id}}">
                         <img src="../assets/images/Photographer.jpg" class="image smooth">
                         <div style="padding: 14px;">
-                            <span class="boei">{{supplier.first_name + ' ' + supplier.location}}</span>
+                            <span class="boei">{{supplier.first_name + ' ' + supplier.last_name}}</span>
                             <div class="bottom clearfix">
                                 <div class="time">
                                     <i v-for="i in supplier.rank" class="el-icon-star-on"></i>
@@ -136,7 +136,7 @@
 
   }
 </script>
-
+`
 <style scoped>
     @import '../assets/css/style.css';
 

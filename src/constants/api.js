@@ -4,7 +4,9 @@ const API = {
   categories: host + 'categories',
   suppliersByCategory: (categoryId) => { return host + 'suppliers/' + categoryId },
   albums: host + 'albums',
-  supplierAlbums: (supplierId) => { return host + 'albums/' + supplierId }
+  supplierAlbums: (supplierId) => { return host + 'albums/' + supplierId },
+  supplier: host + 'supplier',
+  supplierById: (supplierId) => { return host + 'supplier/' + supplierId }
 }
 
 export default API

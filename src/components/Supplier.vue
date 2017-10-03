@@ -73,7 +73,9 @@
         this.$http.get(API.supplierById(supplierId))
           .then(
             (response) => {
-              this.supplier = response.body.data[supplierId - 1]
+              let data = response.body.data;
+              let key = Object.keys(data)[0];
+              this.supplier = data[key];
             }
           )
           .catch(

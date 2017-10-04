@@ -25,10 +25,9 @@
     },
     methods: {
       getSupplierAlbums () {
-        this.$http.get(API.supplierAlbums(this.supplier_id))
+        this.$http.get(API.supplierAlbums(this.$route.query.sid))
           .then(
             (response) => {
-              console.log("albums", response.body.data);
               this.albums = response.body.data;
               // Lunar needs to manipulate the DOM after all albums are rendered
               // maybe there is a better solution but there is no time right now
@@ -40,7 +39,7 @@
           )
       },
       dataLoaded(){
-        console.log("data loaded");
+       // console.log("data loaded");
         try {
           SakuraPlugins.Lunar.getInstance().proxyWrapper();
         } catch (e) {

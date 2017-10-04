@@ -31,7 +31,7 @@
 
         <recommendations></recommendations>
 
-        <albums :supplierId="this.supplier.supplierId"></albums>
+        <albums :supplierId="this.supplierId"></albums>
     </div>
 </template>
 

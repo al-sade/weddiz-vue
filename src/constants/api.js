@@ -6,7 +6,9 @@ const API = {
   albums: host + 'albums',
   supplierAlbums: (supplierId) => { return host + 'albums/' + supplierId },
   supplier: host + 'supplier',
-  supplierById: (supplierId) => { return host + 'supplier/' + supplierId }
+  supplierById: (supplierId) => { return host + 'supplier/' + supplierId },
+  testimonials: host + 'testimonials',
+  testimonialsBySupplier: (testimonialId) => { return host + 'testimonials/' + testimonialId }
 }
 
 export default API

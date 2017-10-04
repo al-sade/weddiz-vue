@@ -2,7 +2,7 @@
     <div id="albums_wrapper">
         <!--lunar gallery-->
         <div class="lunar-gallery-ui">
-            <album v-for="album in albums" :album="{album}" :key="album.album" :width="25"></album>
+            <album v-for="album in albums" :album="{album}" :key="album" :width="25"></album>
         </div>
     </div>
 </template>
@@ -28,6 +28,7 @@
         this.$http.get(API.supplierAlbums(this.supplier_id))
           .then(
             (response) => {
+              console.log("albums", response.body.data);
               this.albums = response.body.data;
               // Lunar needs to manipulate the DOM after all albums are rendered
               // maybe there is a better solution but there is no time right now
@@ -39,7 +40,7 @@
           )
       },
       dataLoaded(){
-//        console.log("data loaded");
+        console.log("data loaded");
         try {
           SakuraPlugins.Lunar.getInstance().proxyWrapper();
         } catch (e) {
@@ -47,8 +48,10 @@
         }
       }
     },
+
     created(){
       this.getSupplierAlbums();
+
     }
   }
 </script>

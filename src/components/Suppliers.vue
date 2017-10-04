@@ -63,6 +63,7 @@
 
 <script>
   import API from "../constants/api";
+
   export default {
     components: {
       'recommendations': require('./Testimonials.vue')

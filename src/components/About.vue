@@ -10,12 +10,12 @@
                 <hr>
                 <p class="text">
                     ״המלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספק, המלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספקהמלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספק,המלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספק המלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספק המלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספק המלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספק המלצות של הזוג המתארות את הספקים שהם לקחו ומה דעתם על כל ספק המלצות של הזוג המתארות את!״</p>
-            <hr>
+                <hr>
             </el-col>
         </el-row>
 
         <el-row justify="center" type="flex">
-            <el-col :span="16"  class="carousel">
+            <el-col :span="16" class="carousel">
                 <el-carousel :interval="4000" type="card" height="300px">
                     <el-carousel-item v-for="item in 6" :key="item">
                         <h3>{{ item }}</h3>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    export default{
+    export default {
         components: {
             'recommendations': require('./Testimonials.vue')
         }
@@ -55,9 +55,10 @@
         top: 8vh;
     }
 
-    .main_content{
+    .main_content {
         padding: 40px 0;
     }
+
     .text {
         padding: 55px 0;
         font-size: 24px;
@@ -78,7 +79,7 @@
         background-position: center center;
     }
 
-    .carousel{
+    .carousel {
         padding: 15px 0 60px;
     }
 

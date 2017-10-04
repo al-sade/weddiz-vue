@@ -9,10 +9,10 @@
                     </div class="box-column">
                     <div class="box-column left-box">
                         <h2 class="testimonial__heading">
-                            <!--{{this._testimonials.testimonial_name}}-->
-                            <!--<span class="testimonial__date">{{this._testimonials.event_date}}</span>-->
+                            {{testimonials.testimonial_name}}
+                            <span class="testimonial__date">{{testimonials.event_date}}</span>
                         </h2>
-                        <!--<p class="testimonial__text">{{this._testimonials.text}}</p>-->
+                        <p class="testimonial__text">{{testimonials.text}}</p>
                         <p class="testimonial__providers" style="direction: rtl">ספקי Weddiz שהיו בחתונה:</p>
                         <img class="rel-icon" src="../assets/icons/icon-team-attractions.png">
                         <img class="rel-icon" src="../assets/icons/icon-team-music.png">
@@ -33,12 +33,23 @@
 </template>
 
 <script>
+  import API from "../constants/api";
+
   export default{
     data() {
       return {
         current: 0,
-        testimonials: []
+        testimonials: [],
+        supId: ''
       }
+    },
+    mounted () {
+      if (this.$route.query.sid){
+        this.supId = this.$route.query.sid
+      } else {
+        this.supId = 2
+      }
+      this.getTestimonials()
     },
     methods: {
       scrollLeft () {
@@ -48,11 +59,10 @@
         this.current - 1 < 0 ? this.current = this.reco.length - 1 : this.current--
       },
       getTestimonials () {
-        this.$http.get(`http://public.weddiz.co.il/api/testimonials`)
+        this.$http.get(API.testimonialsBySupplier(this.supId))
           .then(
             (response) => {
               this.testimonials = response.body.data
-//              console.log(this.testimonials)
               return this.testimonials
             }
           )
@@ -60,14 +70,6 @@
             (error) => console.log(error)
           )
       }
-    },
-    computed: {
-      _testimonials () {
-//        return this.testimonials[current]
-      }
-    },
-    mounted () {
-      this.getTestimonials()
     }
   }
 </script>

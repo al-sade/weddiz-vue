@@ -65,7 +65,7 @@
                 this.cart.splice(item, 1)
             },
             onSubmit() {
-                this.$http.post('http://localhost:8000/api/event/save', {"form_data": this.form, "suppliers": this.cart})
+                this.$http.post('http://public.weddiz.co.il/api/event/save', {"form_data": this.form, "suppliers": this.cart})
                     .then(
                         (res) => {
                             console.log(res.body)

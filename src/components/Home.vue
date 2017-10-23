@@ -13,7 +13,7 @@
             <el-row justify="center" type="flex">
                 <el-col v-for="category in categories" :key="category.category_id" :span="4">
                     <div class="grid-content bg-purple">
-                        <router-link :to="{path: 'suppliers' , query: {category: category}}">
+                        <router-link :to="{path: 'suppliers' , query: {category: category.category_id}}">
                             <div class="category-box smooth">
                                 <h2>{{category.category_name}}</h2>
                             </div>

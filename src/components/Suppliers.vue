@@ -37,12 +37,12 @@
         <el-row class="suppliers-box">
             <el-col v-for="(supplier, index) in suppliers" v-bind:key="index" v-if="filtered(supplier)" :push="2"
                     :span="5">
-                <el-card>
+                <el-card :body-style="{ padding: '0px' }">
                     <el-button type="text" class="button add frente" @click="addSupplier(supplier)">
                         <img class="smooth" src="../assets/images/icon-heart.png">Add to Wishlist
                     </el-button>
                     <router-link :to="{path: 'supplier' , query: {sid: supplier.supplier_id}}">
-                        <img src="../assets/images/Photographer.jpg" class="image smooth">
+                        <img :src="imageUrl(supplier.profile_pic)" class="image smooth profile-pic">
                         <div style="padding: 14px;">
                             <span class="boei">{{supplier.first_name + ' ' + supplier.last_name}}</span>
                             <div class="bottom clearfix">
@@ -99,7 +99,7 @@
         this.cart.push(supplier)
       },
       getSuppliers  () {
-        let category_id = this.$route.query.category
+        let category_id = this.$route.query.category;
         this.$http.get(API.suppliersByCategory(category_id))
           .then(
             (response) => {
@@ -117,6 +117,10 @@
           return false
         }
       },
+        imageUrl(src){
+          let base = "http://admin.weddiz.co.il/image.php?path=/var/www/storage/uploads/profile_pics/";
+          return base+src;
+        },
       getCatName (catId) {
         this.categories.filter(function (obj) {
           if (obj.category_id === catId) return obj.category_name
@@ -202,5 +206,9 @@
 
     .boei, i {
         color: #3a3a3a;
+    }
+    
+    .profile-pic{
+        max-width: 250px;
     }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div id="supplier_wrapper">
         <el-row align="middle" type="flex">
-            <el-col class="hero-img">
-                <h1 class="hero-text main__headline">"סלוגן של הספק הנבחר..."</h1>
+            <el-col class="hero-img" :style="`background-image: url(http://admin.weddiz.co.il/image.php?path=/var/www/storage/uploads/profile_pics/${supplier.profile_pic})`">
+                <h1 class="hero-text main__headline">{{supplier.slogan}}</h1>
             </el-col>
         </el-row>
         <el-row align="middle" type="flex" class="info">
@@ -23,8 +23,8 @@
         <el-row align="middle" type="flex" class="desc-wrapper">
             <el-col :push="2" :span="19" class="desc">
                 <hr>
-                <p> {{supplier.desc}}</p>
-                <hr>
+                <p style="display: inline-block; min-height: 20vh;"> {{supplier.desc}}</p>
+                <iframe style="float:left;" width="560" height="315" :src="supplier.video_link" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>                <hr>
             </el-col>
 
         </el-row>
@@ -44,7 +44,7 @@
       'albums': require('./partials/Albums.vue')
     },
     mounted () {
-      let supplierId = this.$route.query.sid
+      let supplierId = this.$route.query.sid;
       this.getSupplier(supplierId)
     },
     computed: {
@@ -61,12 +61,12 @@
     },
     methods: {
       addSupplier(supplier) {
-        let name = supplier.first_name + ' ' + supplier.last_name
+        let name = supplier.first_name + ' ' + supplier.last_name;
         this.$notify({
           title: name,
           message: 'מחכה לשמוע מכם',
           type: 'success'
-        })
+        });
         this.cart.push(supplier)
       },
       getSupplier (supplierId) {
@@ -81,7 +81,11 @@
           .catch(
             (error) => console.log(error)
           )
-      }
+      },
+        imageUrl(src){
+            let base = "http://admin.weddiz.co.il/image.php?path=/var/www/storage/uploads/profile_pics/";
+            return base+src;
+        }
     }
   }
 </script>
@@ -92,7 +96,6 @@
     }
 
     .hero-img {
-        background-image: url(../assets/images/sabah.png);
         background-attachment: fixed;
         background-size: cover;
         min-height: 40vh;

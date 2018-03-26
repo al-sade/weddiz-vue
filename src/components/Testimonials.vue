@@ -7,7 +7,7 @@
                     <div class="box-column arrow smooth" :span="2">
                         <img src="../assets/images/arrow-left.png" @click="scrollLeft">
                     </div class="box-column">
-                    <div class="box-column left-box">
+                    <div class="box-column left-box" v-if="">
                         <h2 class="testimonial__heading">
                             {{testimonials.testimonial_name}}
                             <span class="testimonial__date">{{testimonials.event_date}}</span>
